@@ -21,7 +21,6 @@ This version has been in the works for a few years. It includes several new feat
 
 - Added `navbar-var-length` config setting that allows the navigation menu to be the same length as the longest sub-menu, so that long words in the submenu are not cut off (#765) 
 - Added `post_search` config setting that creates a Search button in the navbar (#770)
-- Added `edit_page_button` config setting that adds a "Edit page" button to the footer (to edit the current page on GitHub) (#1004)
 - Added `footer-hover-col` config setting to customize the hover colour of links in the footer (#848)
 
 #### New features and improvements
