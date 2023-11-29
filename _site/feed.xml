@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    
+    <title>Ana_Sayfa</title>
+    
+    
+    <description>This website is a virtual proof that I&apos;m awesome</description>
+    
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Temel Dart Dokümanı</title>
+        <description>
+          Dart - 
+          Dart Nedir ? Dart; Google ekibi tarafından geliştirilen, esnek ve güncel bir programlama dilidir. Ekip tarafından yapılan tanımlama şöyledir; Dart, herhangi bir platformda hızlı uygulamalar geliştirmek için optimize edilmiş bir istemci odaklı dildir. Hedefi, çoklu platform geliştirmesi için en üretken programlama dilini sunmak ve uygulama çerçeveleri için esnek bir yürütme...
+        </description>
+        <pubDate>Wed, 29 Nov 2023 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2023-11-29-Dart/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023-11-29-Dart/</guid>
+      </item>
+    
+  </channel>
+</rss>

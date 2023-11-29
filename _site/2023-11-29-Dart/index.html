@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 6.0.1 | Copyright Dean Attali 2023 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Temel Dart Dokümanı</title>
+
+  
+  
+  <meta name="author" content="Ahmet Zeki İnce">
+  
+
+  <meta name="description" content="Dart">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Ana_Sayfa" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Ana_Sayfa">
+  <meta property="og:title" content="Temel Dart Dokümanı">
+  <meta property="og:description" content="Dart">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/dartcover.jpeg">
+  
+
+  
+  <meta property="og:type" content="article">
+  
+  <meta property="og:article:author" content="Ahmet Zeki İnce">
+  
+  <meta property="og:article:published_time" content="2023-11-29T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2023-11-29-Dart/">
+  <link rel="canonical" href="http://localhost:4000/2023-11-29-Dart/">
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Temel Dart Dokümanı">
+  <meta property="twitter:description" content="Dart">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/dartcover.jpeg">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Ana_Sayfa</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">HAKKIMDA</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "Temel Dart Dokümanı", \
+          "desc"     : "Temel Dart Dokümanı", \
+          "category" : "", \
+          "url"      : "/2023-11-29-Dart/", \
+          "date"     : "November 29, 2023" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Hakkımda", \
+          "desc"     : "Hakkımda", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Hoş Geldiniz", \
+          "desc"     : "Hoş Geldiniz", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  
+
+
+  <div id="header-big-imgs" data-num-img=1
+    
+    
+    
+    
+      data-img-src-1="http://localhost:4000/assets/img/dartcover.jpeg"
+    
+    
+    
+  ></div>
+
+
+<header class="header-section has-img">
+<div class="intro-header  big-img ">
+  
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Temel Dart Dokümanı</h1>
+          
+            
+              <h2 class="post-subheading">Dart</h2>
+            
+          
+          
+           
+            
+              By <strong>Ahmet Zeki İnce</strong><br>
+            
+            <span class="post-meta">Posted on November 29, 2023</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <span class='img-desc'></span>
+</div>
+
+
+
+</header>
+
+
+<main class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <div class="blog-post">
+        <h2 id="dart-nedir-">Dart Nedir ?</h2>
+
+<p>Dart; Google ekibi tarafından geliştirilen, esnek ve güncel bir programlama dilidir.
+Ekip tarafından yapılan tanımlama şöyledir;</p>
+<p>Dart, herhangi bir platformda hızlı uygulamalar geliştirmek için optimize edilmiş bir istemci odaklı dildir. Hedefi, çoklu platform geliştirmesi için en üretken programlama dilini sunmak ve uygulama çerçeveleri için esnek bir yürütme ortamı platformuyla eşleştirmektir.</p>
+<p>Diller, teknik zarflarıyla tanımlanır.Geliştirme sırasında yapılan seçimler, bir dilin yeteneklerini ve güçlü yönlerini şekillendiren unsurlardır. Dart, özellikle istemci geliştirmesine uygun olan bir teknik zarfa sahiptir, geliştirmeyi (sub-second stateful hot reload) ve web, mobil ve masaüstü gibi birçok derleme hedefinde yüksek kaliteli üretim deneyimlerini önceliklendirir.</p>
+<p>Dart aynı zamanda Flutter’ın temelini oluşturur. Dart, Flutter uygulamalarını güçlendiren dil ve çalışma zamanını sağlar, ancak aynı zamanda biçimlendirme, analiz ve kod testi gibi birçok temel geliştirici görevini de destekler."</p>
+
+<h2 id="dart-giriş">Dart Giriş</h2>
+<h5 id="değişken--variable-"><strong><em>Değişken ( Variable )</em></strong></h5>
+<p>Verileri programda bir yerde, bir isim vererek tutmamız gerekebilir. Bu verileri programın içinde, cihazın hafızasında tuttuğumuz yapıya Değişken denir. Bir değişkeni kullanabilmemiz için önce programa bu değişkeni tanımlamamız gerekir. Böylelikle program bu değişken için hafızasında bir yer ayırabilir. Veri tipi tanımlanmış değişkenlerde başka tip veriler tutulamaz. Değişken isimlendirirken ismin açıklayıcı olması önerilir, sonradan okunduğunda ya da bir başka programcı okuduğunda isminden çıkarım yapabilmelidir.</p>
+<p>Print fonksiyonu içerisinde değişkenler üzerinde aritmetik işlemler yapılabilir. Bu işlemler değişkenin değerini değiştirmezler sadece değişkenin değeri üzerinden yapılan işlemin sonuçlarını gösterirler. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">sonuclar</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">sonuclar2</span> <span class="o">=</span> <span class="mf">20.34</span><span class="p">;</span>
+<span class="kt">String</span> <span class="n">sonuclar3</span> <span class="o">=</span> <span class="s">'Metin'</span><span class="p">;</span>
+</code></pre></div></div>
+<p></p>
+
+<h5 id="veri-tipleri--built-in-types-"><strong><em>Veri Tipleri ( Built-in Types )</em></strong></h5>
+<p>Integer, double, String, bool veri tiplerine primitif veri tipleri denir. Dart veri tipleri konusunda kuralcı ve sert yapıdadır. Dart gibi sert yapıdaki dillere Strongly Typed diller denir.</p>
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">String</span> <span class="n">ad</span><span class="o">=</span><span class="s">'Ahmet'</span><span class="p">;</span>
+    <span class="kt">String</span> <span class="n">departman</span><span class="o">=</span><span class="s">'Paketleme'</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">yas</span><span class="o">=</span><span class="mi">25</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">kilo</span><span class="o">=</span><span class="mf">60.4</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">servisKullanirMi</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+    <span class="kt">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">haftalikCalismaSaati</span><span class="o">=</span><span class="p">[</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">45</span><span class="p">];</span>
+    <span class="kd">dynamic</span> <span class="n">buDynamicTipiBirDegiskendir</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
+    <span class="n">buDynamicTipiBirDegiskendir</span><span class="o">=</span><span class="s">'Feyyaz'</span><span class="p">;</span>
+    <span class="kt">num</span> <span class="n">buNumTipidir</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
+    <span class="n">buNumTipidir</span><span class="o">=</span><span class="mf">12.12</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="n">buBirIntTipidir</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p> integer = Tam sayı veri tutar.</p>
+<p> double = Ondalıklı sayılar tutar.</p>
+<p> String = Bir veya birden fazla karakter dizisi tutan veri tipidir.</p>
+<p> bool = Evet ya da hayır, var ya da yok verisi tutar. Sadece iki değer alabilir bunlar ; true ve false.</p>
+<p> List =  Dizi tutan veri tipidir. Dart “Zero-based indexing” bir dil olduğu için dizi içindeki elemanların index numaraları sayılırken 0’dan saymaya başlanır.</p>
+<p>Listelerin elemanlarını print fonksiyonu içerisine listenin ismini yazıp, ismin yanına köşeli parantezler içerisinde index numaraları yazılarak console’da gösterilirler.</p>
+<p>dynamic, var = Değişkenin tutacağı veri tipinin önceden bilinmediği veya ileride değişebileceği durumlarda kullanılan veri tipleridir. Dynamic tip değişkene tanımlaması yapılmış olsa ve içerisine bir veri koyulsa bile başka tip veri verilebilir, var tip değişkende böyle bir şey yapılamaz tanımlanırken ya da içerisine veri koyulduğunda o tip veriler kabul eder. Gerekmedikçe kullanılmaları önerilmez.</p>
+<p>num = Num bir üst veri tipidir. int ve double veri tutabilir.</p>
+
+<h5 id="listeler"><strong><em>Listeler</em></strong></h5>
+<p>Programımızda veri tutmamızı sağlayan yapılardır. İçerisindeki verilerin indexleri vardır ve bunlar 0 ile başlar. Liste içerisindeki elemanlar birbirlerinden virgül ile ayrılmalıdır. Listeler üzerinde çalışan birçok	fonksiyon bulunmaktadır. Bu fonksiyonları listenin isminin yanına nokta koyarak çağırıyoruz. Örneğin “pazarListesi.indexOf(‘Patates’)”. Ayrıca hangi fonksiyonları kullanabileceğinizi listenizin isminin yanına nokta koyarak da öğrenebilirsiniz, Dart size kullanılabilecekleri gösterecektir. Örnek kullanım :</p>
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span><span class="n">pazarListesi</span><span class="o">=</span><span class="p">[</span><span class="s">'Patates'</span><span class="p">,</span><span class="s">'Soğan'</span><span class="p">,</span><span class="s">'Pırasa'</span><span class="p">,</span><span class="s">'Peynir'</span><span class="p">,</span><span class="s">'Muz'</span><span class="p">];</span>
+    <span class="n">Print</span><span class="p">(</span><span class="s">'Listenin birinci elemanı: </span><span class="si">${pazarListesi[0]}</span><span class="s">'</span><span class="p">);</span>
+    <span class="n">Print</span><span class="p">(</span><span class="s">'Listenin birinci elemanı: </span><span class="si">${pazarListesi[1]}</span><span class="s">'</span><span class="p">);</span>
+    <span class="c1">//methot kullanım örneği (.indexOf).</span>
+    <span class="kt">int</span> <span class="n">peynirinSirasi</span> <span class="o">=</span> <span class="n">pazarListesi</span><span class="o">.</span><span class="na">indexOf</span><span class="p">(</span><span class="s">'Peynir'</span><span class="p">);</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">peynirSirasi</span><span class="p">);</span>
+    <span class="c1">//.add kullanımı.</span>
+    <span class="n">pazarListesi</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="s">'Limon'</span><span class="p">);</span>
+    <span class="c1">//.length kullanımı.</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">pazarListesi</span><span class="o">.</span><span class="na">length</span><span class="p">);</span>
+    <span class="c1">//insert() metodu kullanımı.</span>
+    <span class="n">pazarListesi</span><span class="o">.</span><span class="na">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s">'Balık'</span><span class="p">);</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">pazarListesi</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Liste üzerinde yapılabilecek işlem örnekleri:</p>
+<ul>
+  <li>Listenin sonuna eleman ekleyebilmek için listelere özgü bir fonksiyon olan “add()” fonksiyonu kullanılabilir.</li>
+  <li>Listenin kaç elemanlı olduğunu öğrenmek için “length” metodu kullanılabilir.</li>
+  <li>
+    <p>Listenin istediğimiz indexine ekleme yapmak için “insert()” metodu kullanılabilir.
+Kullanımı aşağıda görüldüğü gibidir. Önce eklemek yapmak istediğimiz index girilir virgül sonrası da eklemek istediğimiz veri yazılır.</p>
+  </li>
+  <li><strong><em>Higher Order List Methods</em></strong>=Liste üzerinde çalışan ve diğer fonksiyonları parametre olarak alan yüksek dereceli fonksiyonlardır. Kodu daha temiz ve okunabilir hale getirebilir ve işlemleri daha etkili bir şekilde gerçekleştirmenizi sağlar. Bütün yüksek mertebeli fonksiyonlar aynı mantıkla çalışır bu mantık listenin bütün elemanlarını tek tek inceleyerek belli sonuçlar döndürmektir. Liste isminden sonra nokta koyarak bu metotlara ulaşabilirsiniz. Örnek:</li>
+</ul>
+<p>Aşağıda gördüğümüz “any” metodu listenin tüm elemanlarını tek tek teste sokarak işlem yapar ve sonuç olarak boolean bir değer döndürür. Genelde elemanın varlığını kontrol etmek amaçlı kullanılır. Üzerinde çalıştığı listede herhangi bir değişiklik yapmaz. Örneğimizde listemizin içinde “2” elemanının varlığını kontrol ediyoruz.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">ilk5</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">ilk5</span><span class="o">.</span><span class="na">any</span><span class="p">((</span><span class="n">element</span><span class="p">)</span><span class="o">=</span><span class="p">&gt;</span><span class="n">element</span><span class="o">==</span><span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<h5 id="fonksiyonlar"><strong><em>Fonksiyonlar</em></strong></h5>
+<p>Fonksiyonlar tüm programlama dillerinin yapı taşlarından biridir. Programın sürekli yapacağı işlemleri bir kod paketi içine alır ve ihtiyaç oldukça çağırırsınız.</p>
+<p>Fonksiyon, isminin yanına yazılmış parantezler fonksiyonların girdilerini(Argüman, parametre) aldıkları yerledir. Fonksiyonlar matematikteki fonksiyonlar gibidir. Aldıkları girdiler ile istenen işlemleri yapıp sonucunu döndürürler. Süslü parantezler içerisine yazılan kodlara gövde denir. Fonksiyonun isminin başında ise fonksiyonun işlemlerini yaptıktan sonra döndüreceği sonuç verisinin tipi yazılır. Aşağıda örnek bir fonksiyon verilmiştir. Fonksiyonun alacağı parametrelerin veri tiplerini ve fonksiyonun döndüreceği verinin tipini fonksiyonu oluştururken vermeliyiz. Örneği:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">hesapla</span><span class="p">(</span><span class="kt">int</span> <span class="n">ilkSayi</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ikinciSayi</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">ilkSayi</span><span class="o">*</span><span class="n">ikinciSayi</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>Anonim Fonksiyonlar = Fonksiyonlara, ihtiyaç duyduğumuzda çağırmak için isimler veririz. Ancak bazı durumlarda fonksiyonlar aynı anda oluşturulur ve kullanılır ancak başka bir yerde kullanılmaz bu durumlarda isimsiz yani anonim fonksiyonlar kullanırız. Kullanımı şöyledir : “(girdiler){gövdedeki kodlar}”.</li>
+</ul>
+
+<p></p>
+
+<h5 id="koşullu-i̇fadeler--conditionals-"><strong><em>Koşullu İfadeler ( conditionals )</em></strong></h5>
+<p><strong><em>if-else</em></strong> = Yapı olarak şöyledir: if(koşul buraya yazılır.){koşul geçerliyse bu blok içerisinde istenen işlem yapılır.}else{koşul geçerli değilse bu blok içerisindeki işlem yapılır.}</p>
+<p>if-else yapısı parantez içinde yani koşul kısmında her zaman true ya da false görmeyi bekler.</p>
+<p>Sorgu operatörleri şunlardır:</p>
+<ul>
+  <li>”==” eşitse</li>
+  <li>”!=” eşit değilse</li>
+  <li>”&gt;” büyükse</li>
+  <li>”&lt;” küçükse</li>
+  <li>”&gt;=” büyük eşit ise</li>
+  <li>”&lt;=” küçük eşit ise
+Ayrıca koşullu ifadelerde birden fazla koşulu şu operatörleri kullanarak kontrol edebiliriz:</li>
+  <li>“&amp;&amp;” ve</li>
+  <li>”!” değil
+“||” veya</li>
+</ul>
+<p>Aşağıda örnek bir if-else kullanımı görmekteyiz:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'dart:math'</span><span class="o">;</span> <span class="c1">//Random().nextInt kullanımı için eklendi.</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="kt">int</span> <span class="n">piyonSayisi</span><span class="o">=</span><span class="n">Random</span><span class="p">()</span><span class="o">.</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="c1">//Burada 1 ile 10 arasında rastgele bir tam sayı üretiyoruz. </span>
+  <span class="n">print</span><span class="p">(</span><span class="n">piyonSayisi</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">piyonSayisi</span><span class="p">&gt;</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'7 ve üzeri ise'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">piyonSayisi</span><span class="p">&gt;</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'5 veya 6 ise'</span><span class="p">);</span>
+    
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">piyonSayisi</span><span class="p">&gt;</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'3 veya 4 ise'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span><span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'1 veya 2 ise'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<h5 id="string-interpolation"><strong><em>String Interpolation</em></strong></h5>
+<p>Dart dilinde de diğer dillerde olduğu gibi ekrana bir şeyler yazdırmak istediğimizde print() fonksiyonunu kullanıyoruz. Nasıl yazdırıldığıyla ilgili şöyle bir örnek verebiliriz “print(‘yazılmasını istediğiniz metin’);”. Görüldüğü üzere fonksiyon parantezleri içerisinde tırnak açarak (çift tırnak açılarak veyahut Dart dilinin özelliklerinden olan tek tırnak kullanımı ile ki tek tırnak kullanımı önerilir.) metin içine yazılır. Ancak fonksiyon tırnak içerisindeki her şeyi metin olarak kabul eder. Metni alt alta yazdırmak istediğimizde alt satırda görünmesini istediğimiz metin önüne “\n”eklemeliyiz ya da üç tırnak kullanmalıyız eğer üç tırnak ekler ve içerisine yazılan metinde satırlar oluşturursak tırnak içindeki metin olduğu gibi yazdırılır.</p>
+<p>Herhangi bir şekilde değişken, liste elemanı gibi şeyler eklenmesi için String interpolution kullanılmalıdır. Yazdırmak istediğimiz şeyden önce “$” işareti yazarsak fonksiyon bu işaretten sonra bir değişken ya da liste gibi bir şey geleceğini biliyor ve yazdırmamıza izin veriyor. Liste yazdırmak ya da eklenecek şey üzerinden işlem yapmak istersek “${}” şeklinde süslü parantez içerisine yazmalıyız. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">String</span> <span class="n">ad</span><span class="o">=</span><span class="s">'Mahmut'</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">yas</span><span class="o">=</span><span class="mi">32</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">kilo</span><span class="o">=</span><span class="mf">85.2</span><span class="p">;</span>
+    <span class="kt">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">haftalikCalismaSaati</span><span class="o">=</span><span class="p">[</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">45</span><span class="p">];</span>
+    <span class="c1">//String interpolation kullanımı.</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'Personelin adı: </span><span class="si">$ad</span><span class="s"> Yaşı: </span><span class="si">$yas</span><span class="s"> Kilosu: </span><span class="si">$kilo</span><span class="s">'</span><span class="p">);</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'Haftalık Çalışma Saatleri </span><span class="se">\n</span><span class="s">1.Hafta: </span><span class="si">${haftalikCalismaSaati[0]}</span><span class="s"> </span><span class="se">\n</span><span class="s">2.Hafta: </span><span class="si">${haftalikCalismaSaati[1]}</span><span class="s"> </span><span class="se">\n</span><span class="s">3.Hafta: </span><span class="si">${haftalikCalismaSaati[2]}</span><span class="s">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<h5 id="sınıf-ve-nesneler--classobjects-"><strong><em>Sınıf ve Nesneler ( Class&amp;Objects )</em></strong></h5>
+<p>Class dediğimiz şey aslında bir şablon, bir prototiptir. Flutter, uygulamamızda kullanıcıya göstereceğimiz, etkileşime sokacağımız şeyleri oluştururken şablonlara göre oluşturuyor. Flutter’da classlar ve objeler her yer ve her şeydir. Objeler yani nesneler bu şablonları kullanarak yaratılan gerçek yapılardır. Şöyle bir örnek verelim; bir televizyon fabrikası hayal edersek, burada mühendislerin oluşturduğu örnek televizyon şablonlarını sınıflara benzetirsek. Bu şablonlardan üretilen televizyonları da nesnelere benzetebiliriz. Örnek üzerinden ilerleyecek olursak bu şablon televizyonun; renk, boyut, işlevleri gibi bilgileri içerir. Bu bilgileri değişkenler ile tutarız ve sonradan farklı bilgilere sahip nesneler yaratabiliriz bunlar “instance variables” olarak geçer. İşlevler kısmında televizyonun fonksiyonel özellikleri tutulur ve bunlara “methods” denir. Tek bir şablon ile uygulamamızda istediğimiz kadar nesne yaratabiliriz. Class isimleri büyük harfle başlar ve PascalCase yazım kuralı ile yazılır. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">Televizyon</span> <span class="n">birinciTV</span><span class="o">=</span><span class="n">Televizyon</span><span class="p">(</span><span class="nl">ekranBilgisi:</span><span class="mi">101</span><span class="p">);</span>
+    <span class="n">Televizyon</span> <span class="n">ikinciTV</span><span class="o">=</span> <span class="n">Televizyon</span><span class="p">(</span><span class="nl">ekranBilgisi:</span><span class="mi">105</span><span class="p">);</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">birinciTV</span><span class="o">.</span><span class="na">ekranBoyutu</span><span class="p">);</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">ikinciTV</span><span class="o">.</span><span class="na">ekranBoyutu</span><span class="p">);</span>
+    <span class="n">birinciTV</span><span class="o">.</span><span class="na">sesiAc</span><span class="p">();</span>
+    <span class="n">birinciTV</span><span class="o">.</span><span class="na">cihazBilgisi</span><span class="p">();</span>
+    <span class="n">ikinciTV</span><span class="o">.</span><span class="na">cihazBilgisi</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Televizyon</span><span class="p">{</span>
+    <span class="c1">//variables</span>
+    <span class="kt">int</span><span class="o">?</span> <span class="n">ekranBoyutu</span><span class="p">;</span>
+    <span class="kt">String</span> <span class="n">modelAdi</span><span class="o">=</span><span class="s">'Flut TV'</span><span class="p">;</span>
+    <span class="c1">//constructor</span>
+    <span class="n">Televizyon</span><span class="p">({</span><span class="kt">int</span><span class="o">?</span> <span class="n">ekranBilgisi</span><span class="p">}){</span>
+        <span class="n">ekranBoyutu</span><span class="o">=</span><span class="n">ekranBilgisi</span><span class="p">;}</span>
+    <span class="c1">//Methods</span>
+    <span class="kt">void</span> <span class="n">sesiAc</span><span class="p">(){</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">'Hoparlörün sesi yükseltildi.'</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">cihazBilgisi</span><span class="p">(){</span>
+        <span class="n">print</span><span class="p">(</span><span class="n">ekranBoyutu</span><span class="p">);</span>
+        <span class="n">print</span><span class="p">(</span><span class="n">modelAdi</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Constructor = Nesneler yaratılırken, özellikler vermemizi sağlar.</p>
+<p>Constructor içinde verilecek değişken sayısı ne kadar çoğalırsa verilen değerlerin hangi değerler olduğunu anlamak o kadar zorlaşabilir. Bu sebeple constructor girdilerini verirken “named argument / named parameter” kullanmak önerilir. “named argument” kullanmak için girdiler içindeki değişkeni süslü parantez içine yazarız. Yukarıdaki örneği inceleyebilirsiniz. (Veri tipinin yanındaki parantezin sebebini “Null Safety” bölümünde öğreneceksiniz.)</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">Televizyon</span> <span class="n">tv_01</span><span class="o">=</span><span class="n">Televizyon</span><span class="p">(</span><span class="nl">ekranBoyutu:</span><span class="mi">101</span><span class="p">,</span> <span class="nl">modelAdi:</span><span class="s">'Flut TV'</span><span class="p">);</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'ekran boyutu: </span><span class="si">${tv_01.ekranBoyutu}</span><span class="s">, model adı: </span><span class="si">${tv_01.modelAdi}</span><span class="s">'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Televizyon</span> <span class="p">{</span>
+    <span class="kt">int</span><span class="o">?</span> <span class="n">ekranBoyutu</span><span class="p">;</span>
+    <span class="kt">String</span><span class="o">?</span> <span class="n">modelAdi</span><span class="p">;</span>
+
+<span class="n">Televizyon</span><span class="p">({</span><span class="k">this</span><span class="o">.</span><span class="na">ekranBoyutu</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="k">this</span><span class="o">.</span><span class="na">modelAdi</span><span class="p">});</span>
+
+    <span class="kt">void</span> <span class="n">sesiAc</span><span class="p">(){</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">'Hoparlör sesi yükseltildi.'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Nesne yaratılırken özelliklerinin verilmesinin unutulma ihtimaline karşı varsayılan değer atama işini de constructor içerisinde değer atayarak yapıyoruz.  Değer verdikten sonra, yaratılırken aksi istenmedikçe nesnelerin özellikleri constructor içerisinde verilen özellikler ve değerleri olur.</p>
+<p>Constructor içerisindeki değişken karmaşıklığını azaltmak için Dart ekibi “this.” Anahtar kelimesini geliştirmiştir. Bu kullanım ile constructor içerisinde aynı isimle verilen özellik sınıf içerisindeki aynı isimli özelliğe atanmaktadır. Varsayılan değerler yine atanabilmektedir. Yukarıdaki örneğin this. ile kullanımı aşağıdadır.</p>
+<p>Methodlar yaratılan nesneler tarafından çağırıldığında yapılması beklenen işlevi yerine getirirler.</p>
+
+<h5 id="nesne-tabanlı-programlama--oop-"><strong><em>Nesne Tabanlı Programlama ( OOP )</em></strong></h5>
+
+<p>Nesne yönelimli programlama denince akla 4 temel özellikten bahsedilir.</p>
+<ul>
+  <li>Soyutlama ( Abstraction )</li>
+  <li>Paketleme ( Encapsulation )</li>
+  <li>Miras alma ( Inheritance )</li>
+  <li>Çok biçimlilik ( Polymorphism )</li>
+</ul>
+
+<p><strong><em>Soyutlama</em></strong></p>
+<p>Soyutlama denince, bir nesnenin kendine has değerde özellikleri olan ve bazı davranışları da gerçekleştirebilen bir veri tipi aklımıza gelsin. Classlar	 soyut birer tanımlamayken, classlar kullanılarak somut nesneler yaratılır. Kodunumuzu daha modüler parçalara ayrımalı ve birbirinden soyutlamalıyız. Örneğin: Aşağıdaki kullanım sayesinde programı modüler bir hale getirmiş oluruz ve bu sayede düzenlemeler yapması da daha kolaylaşmış olur. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Soru</span><span class="p">{</span>
+    <span class="kt">String</span> <span class="n">soruMetni</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">soruYaniti</span><span class="p">;</span>
+<span class="n">Soru</span><span class="p">({</span><span class="kd">required</span> <span class="k">this</span><span class="o">.</span><span class="na">soruMetni</span><span class="p">,</span> <span class="kd">required</span> <span class="k">this</span><span class="o">.</span><span class="na">soruYaniti</span><span class="p">});</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">TestVeri</span><span class="p">{</span>
+    <span class="kt">List</span><span class="p">&lt;</span><span class="n">Soru</span><span class="p">&gt;</span><span class="n">soruBankasi</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">Soru</span><span class="p">(</span><span class="nl">soruMetni:</span> <span class="s">'Türkiyenin başkenti Ankaradır.'</span><span class="p">,</span> <span class="nl">soruYaniti:</span> <span class="kc">true</span><span class="p">),</span>
+        <span class="n">Soru</span><span class="p">(</span><span class="nl">soruMetni:</span> <span class="s">'Dünyanın en güzel şehri Ankaradır.'</span><span class="p">,</span> <span class="nl">soruYaniti:</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Paketleme</em></strong></p>
+<p>Bir nesneye, kendi rızası olmadan programın herhangi bir yerinden erişilebilmesi programın ileride bozulabilmesine sebep olabilir. Bu durum bizi paketleme kullanmaya iter. Sınıf oluşturulurken dışarıyla paylaşılacak bilginin gönderilmesini sağlayacak get metodu ve dışarıdan veriyi göndermek için set metodu da oluşturulur ve bilginin tutulduğu değişken private değişken olarak tanımlanırsa gizli olmasına rağmen method ile istenilen bilgi dışarıyla güvenli bir şekilde paylaşılmış olur. Set metodu ile de dışarıdan bilgi içeriye yazılabilir. Private değişken tanımlamak için değişken isminin önüne “_” alt tire eklenmelidir. Örneğin:
+</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'oop_soyutlama.dart'</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">TestVeri</span><span class="p">{</span>
+    <span class="kt">List</span><span class="p">&lt;</span><span class="kd">dynamic</span><span class="p">&gt;</span><span class="n">_soruBankasi</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">Soru</span><span class="p">(</span><span class="nl">soruMetni:</span> <span class="s">'Türkiyenin başkenti Ankaradır.'</span><span class="p">,</span> <span class="nl">soruYaniti:</span> <span class="kc">true</span><span class="p">),</span>
+        <span class="n">Soru</span><span class="p">(</span><span class="nl">soruMetni:</span> <span class="s">'Dünyanın en güzel şehri Ankaradır.'</span><span class="p">,</span> <span class="nl">soruYaniti:</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="p">];</span>
+    <span class="kt">String</span> <span class="n">getSoruMetni</span><span class="p">(</span><span class="kt">int</span> <span class="n">soruIndex</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">_soruBankasi</span><span class="p">[</span><span class="n">soruIndex</span><span class="p">]</span><span class="o">.</span><span class="na">soruMetni</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">getSoruYaniti</span><span class="p">(</span><span class="kt">int</span> <span class="n">soruIndex</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">_soruBankasi</span><span class="p">[</span><span class="n">soruIndex</span><span class="p">]</span><span class="o">.</span><span class="na">soruYaniti</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Kullanılan get metodlarının bir başka avantajı da istenilen bilgiyi geri göndermeden önce kontrol yapılabiliyor olmasıdır.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BankAccount</span> <span class="p">{</span>
+<span class="kd">late</span>  <span class="kt">String</span> <span class="n">_accountNumber</span><span class="p">;</span>
+<span class="kd">late</span> <span class="kt">double</span> <span class="n">_balance</span><span class="p">;</span>
+  <span class="c1">// Getter</span>
+  <span class="kt">String</span> <span class="kd">get</span> <span class="n">accountNumber</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">_accountNumber</span><span class="p">;</span>
+  <span class="c1">// Setter</span>
+  <span class="kd">set</span> <span class="n">accountNumber</span><span class="p">(</span><span class="kt">String</span> <span class="n">newAccountNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">newAccountNumber</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_accountNumber</span> <span class="o">=</span> <span class="n">newAccountNumber</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">print</span><span class="p">(</span><span class="s">"Geçersiz hesap numarası. Hesap numarası 10 karakter olmalıdır."</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="c1">// Getter</span>
+  <span class="kt">double</span> <span class="kd">get</span> <span class="n">balance</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">_balance</span><span class="p">;</span>
+  <span class="c1">// Setter</span>
+  <span class="kd">set</span> <span class="n">balance</span><span class="p">(</span><span class="kt">double</span> <span class="n">newBalance</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">newBalance</span> <span class="p">&gt;</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_balance</span> <span class="o">=</span> <span class="n">newBalance</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">print</span><span class="p">(</span><span class="s">"Geçersiz bakiye. Bakiye negatif olamaz."</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span> 
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">BankAccount</span> <span class="n">account</span> <span class="o">=</span> <span class="n">BankAccount</span><span class="p">();</span>
+  <span class="c1">// Setter kullanımı</span>
+  <span class="n">account</span><span class="o">.</span><span class="na">accountNumber</span> <span class="o">=</span> <span class="s">"1234567890"</span><span class="p">;</span>
+  <span class="n">account</span><span class="o">.</span><span class="na">balance</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">;</span>
+  <span class="c1">// Getter kullanımı</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Hesap Numarası: </span><span class="si">${account.accountNumber}</span><span class="s">"</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Bakiye: </span><span class="si">${account.balance}</span><span class="s"> USD"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><strong><em>Miras Alma</em></strong></p>
+<p>Nesneye yönelik programlamada sınıflar arasında Parent - Child ilişkisi kurulabilir. Child class, parent classtan tüm propertyleri miras olarak alır. Bu sayede bir propertyi tekrar tekrar yazmak zorunda kalmadan child classın da kullanmasını sağlamış oluruz. Miras olarak gelen propertyi kullanmak zorunda değiliz üzerine yazarak ( override ederek.) child classın kullanımına uygun hale getirebiliriz. Ayrıca child classa istediğiniz ilave propertyleri ekleyebilirsiniz. Bu sayede sadece gerekli gördüğünüz classta bulunmuş olurlar. Child classlar “super.” Anahtar kelimesini kullanarak parent classın propertylerini kullanabilirler. Örneğin:
+</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Insan</span> <span class="n">yetiskin_1</span> <span class="o">=</span> <span class="n">Insan</span><span class="p">(</span><span class="nl">ad:</span> <span class="s">'Murat'</span><span class="p">,</span> <span class="nl">yas:</span> <span class="mi">32</span><span class="p">);</span>
+  <span class="n">Bebek</span> <span class="n">bebek_1</span> <span class="o">=</span> <span class="n">Bebek</span><span class="p">(</span><span class="nl">ad:</span> <span class="s">'Başak'</span><span class="p">,</span> <span class="nl">yas:</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="n">YasliInsan</span> <span class="n">yasli_1</span> <span class="o">=</span> <span class="n">YasliInsan</span><span class="p">(</span><span class="nl">ad:</span> <span class="s">'Muhammet'</span><span class="p">,</span> <span class="nl">yas:</span> <span class="mi">75</span><span class="p">);</span>
+  <span class="n">yetiskin_1</span><span class="o">.</span><span class="na">uyu</span><span class="p">();</span>
+  <span class="n">bebek_1</span><span class="o">.</span><span class="na">uyu</span><span class="p">();</span>
+  <span class="n">yasli_1</span><span class="o">.</span><span class="na">uyu</span><span class="p">();</span>
+  <span class="n">bebek_1</span><span class="o">.</span><span class="na">agla</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Insan</span> <span class="p">{</span>
+  <span class="kt">String</span> <span class="n">ad</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">yas</span><span class="p">;</span>
+  <span class="n">Insan</span><span class="p">({</span>
+    <span class="kd">required</span> <span class="k">this</span><span class="o">.</span><span class="na">ad</span><span class="p">,</span>
+    <span class="kd">required</span> <span class="k">this</span><span class="o">.</span><span class="na">yas</span><span class="p">,</span>
+  <span class="p">});</span>
+<span class="kt">void</span> <span class="nf">uyu</span><span class="p">(){</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">'8 saat uyurum.'</span><span class="p">);}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Bebek</span> <span class="kd">extends</span> <span class="n">Insan</span><span class="p">{</span>
+  <span class="n">Bebek</span><span class="p">({</span><span class="kd">required</span> <span class="k">super</span><span class="o">.</span><span class="na">ad</span><span class="p">,</span> <span class="kd">required</span> <span class="k">super</span><span class="o">.</span><span class="na">yas</span><span class="p">});</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">uyu</span><span class="p">(){</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'20 saat uyurum'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">agla</span><span class="p">(){</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'Ağlıyorum.'</span><span class="p">);}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">YasliInsan</span> <span class="kd">extends</span> <span class="n">Insan</span><span class="p">{</span>
+  <span class="n">YasliInsan</span><span class="p">({</span><span class="kd">required</span> <span class="k">super</span><span class="o">.</span><span class="na">ad</span><span class="p">,</span> <span class="kd">required</span> <span class="k">super</span><span class="o">.</span><span class="na">yas</span><span class="p">});</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">uyu</span><span class="p">(){</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'4 saat uyurum'</span><span class="p">);}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><strong><em>Çok Biçimlilik</em></strong></p>
+<p>Bir nesneni başka nesneler gibi davranabilme, başka formlara bürünebilmesidir. Child sınıfların nesneleri bazı durumlarda parentlarının nesnesiymiş gibi davranabilir. Örneğin:
+</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="n">Insan</span> <span class="n">yetiskin_1</span><span class="o">=</span><span class="n">Insan</span><span class="p">(</span><span class="nl">ad:</span> <span class="s">'Murat'</span><span class="p">,</span> <span class="nl">yas:</span><span class="mi">32</span><span class="p">);</span>
+  <span class="n">Bebek</span> <span class="n">bebek_1</span><span class="o">=</span><span class="n">Bebek</span><span class="p">(</span><span class="nl">ad:</span> <span class="s">'Basak'</span><span class="p">,</span> <span class="nl">yas:</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">YasliInsan</span> <span class="nl">yasli_1:</span><span class="n">YasliInsan</span><span class="p">(</span><span class="nl">ad:</span> <span class="s">'Muhammet'</span><span class="p">,</span> <span class="nl">yas:</span><span class="mi">75</span><span class="p">);</span>
+  <span class="n">uykuBilgisi</span><span class="p">(</span><span class="n">yetiskin_1</span><span class="p">);</span>
+  <span class="n">uykuBilgisi</span><span class="p">(</span><span class="n">bebek_1</span><span class="p">);</span>
+  <span class="n">uykuBilgisi</span><span class="p">(</span><span class="n">yasli_1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">uykuBilgisi</span><span class="p">(</span><span class="n">Insan</span> <span class="n">nesne</span><span class="p">){</span>
+  <span class="n">nesne</span><span class="o">.</span><span class="na">uyu</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<h5 id="exception-handling--hata-i̇şleme-"><strong><em>Exception Handling ( Hata İşleme )</em></strong></h5>
+<p>Programlarımız çalışırken istisnai durumlar ve hatalar oluşabilir. Bu gibi durumlarda uygulamanın akışı bozulur ve istenmeyen sonuçlar doğurur. Örneğin uygulamanız kilitlenebilir, uygulama ekranınız donabilir. Bu gibi istenmeyen durumların önüne geçmeliyiz. Bunu hata doğurması muhtemel durumlar için hata gönderip bu hataları yakalayan yapılar oluşturarak sağlarız. Örnek:</p>
+<p>Aşağıdaki örnek yapımızda oluşturduğumuz fonksiyona bir int değer gönderiyoruz. Bu değer 100’den küçük ise değeri ekrana yazdırıyoruz eğer değer 100 veya yüzden büyükse “throw” anahtar kelimesi ile String bir hata mesajı gönderiyoruz. Gönderilen hatayı yakalamak için try-catch kullanmalıyız. Hatanın oluşması muhtemel satırda yani fonksiyonumuzun çağırıldığı satırda önce “try” ile fonksiyonu çalıştırmayı deniyoruz. Burada eğer herhangi istenmeyen bir durum yoksa fonksiyonumuz direkt çalışıyor. Örneğimizdeki gibi bir hata oluştuğunda sonrasında gelen “catch” yani yakalama ile gönderilen hatayı yakalayıp süslü parantezin içine sonrasında ne yapılacağını ekliyoruz. Örnekteki kodu çalıştırdığımızda ekranda “Hata yakalandı.” yazmasını bekliyoruz.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="k">try</span><span class="p">{</span><span class="n">araFonksiyon</span><span class="p">(</span><span class="mi">1000</span><span class="p">);}</span>
+  <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">){</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'Hata yakalandı.'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">birFonksiyon</span><span class="p">(</span><span class="kt">int</span> <span class="n">numara</span><span class="p">){</span>
+  <span class="n">numara</span><span class="p">&lt;</span><span class="mi">100</span> <span class="o">?</span> <span class="n">print</span><span class="p">(</span><span class="n">numara</span><span class="p">)</span> <span class="o">:</span> <span class="k">throw</span>  <span class="n">Exception</span><span class="p">(</span><span class="s">'Diğer bir hata oluştu.'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Birden fazla hata denetleme yapısı kurmak istediğimizde “on” anahtar kelimesi kullanabiliriz. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span><span class="p">{</span><span class="n">birFonksiyon</span><span class="p">(</span><span class="mi">1001</span><span class="p">);}</span>
+  <span class="kd">on</span> <span class="n">ExceptionTypeA</span><span class="p">{</span><span class="n">print</span><span class="p">(</span><span class="s">'A tipi bir hata yakalandı.'</span><span class="p">);}</span>
+  <span class="kd">on</span> <span class="n">ExceptionTypeB</span><span class="p">{</span><span class="n">print</span><span class="p">(</span><span class="s">'B tipi bir hata yakalandı.'</span><span class="p">);}</span>
+  <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">){</span><span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">);}</span>
+  <span class="k">finally</span> <span class="p">{</span><span class="n">print</span><span class="p">(</span><span class="s">'Her durumda çalışacak kod satırı.'</span><span class="p">);}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">birFonksiyon</span><span class="p">(</span><span class="kt">int</span> <span class="n">numara</span><span class="p">){</span>
+  <span class="n">numara</span><span class="p">&lt;</span><span class="mi">100</span> <span class="o">?</span> <span class="n">print</span><span class="p">(</span><span class="n">numara</span><span class="p">)</span> <span class="o">:</span> <span class="n">numara</span><span class="p">&lt;</span><span class="mi">1000</span>  <span class="o">?</span> <span class="k">throw</span> <span class="n">ExceptionTypeA</span><span class="p">()</span> <span class="o">:</span> <span class="n">numara</span><span class="p">&lt;</span><span class="mi">10000</span> <span class="o">?</span> <span class="k">throw</span> <span class="n">ExceptionTypeB</span><span class="p">()</span> <span class="o">:</span> <span class="k">throw</span> <span class="n">Exception</span><span class="p">(</span><span class="s">'Diğer bir hata oluştu.'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ExceptionTypeA</span> <span class="kd">implements</span> <span class="n">Exception</span> <span class="p">{}</span>
+<span class="kd">class</span> <span class="nc">ExceptionTypeB</span> <span class="kd">implements</span> <span class="n">Exception</span> <span class="p">{}</span>
+</code></pre></div></div>
+<p>Program çalışırken hangi hatayı alırsa alsın çalıştırmak istediğimiz bir şey olduğunda “finally” anahtar kelimesini kullanabiliriz. Fonksiyon çağırıldığında her zaman çalışır. Yukarıdaki örneği inceleyin.</p>
+<p>Yakaladığın hatayı çağıran fonksiyona göndermeyi sağlayan “rethrow” anahtar kelimeli bir kullanım daha var. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span><span class="p">{</span><span class="n">araFonksiyon</span><span class="p">(</span><span class="mi">1000</span><span class="p">);}</span>
+  <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">){</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'Main Fonksiyonu şu hatayı yakaladı:</span><span class="si">$e</span><span class="s">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">birFonksiyon</span><span class="p">(</span><span class="kt">int</span> <span class="n">numara</span><span class="p">){</span>
+  <span class="n">numara</span><span class="p">&lt;</span><span class="mi">100</span> <span class="o">?</span> <span class="n">print</span><span class="p">(</span><span class="n">numara</span><span class="p">)</span> <span class="o">:</span> <span class="k">throw</span> <span class="n">Exception</span><span class="p">(</span><span class="s">'Diğer bir hata oluştu.'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">araFonksiyon</span><span class="p">(</span><span class="kt">int</span> <span class="n">numara</span><span class="p">){</span>
+  <span class="k">try</span> <span class="p">{</span><span class="n">birFonksiyon</span><span class="p">(</span><span class="n">numara</span><span class="p">);}</span>
+  <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">){</span><span class="n">print</span><span class="p">(</span><span class="s">'ara fonksiyon şu hatayı yakaladı: </span><span class="si">$e</span><span class="s">'</span><span class="p">);</span>
+  <span class="k">rethrow</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<h5 id="null-safety"><strong><em>Null Safety</em></strong></h5>
+<p><strong><em>Null nedir</em></strong>
+Bunu açıklamadan önce encoding’in açıklamasını yapmalıyız. Program hafızası dediğimiz şey 1 ve 0’lardan oluşan milyonlarca anahtarın bir araya gelmesidir. Bunlara bit diyoruz. Encoding, programın değişken yarattıktan ve içine bir atama yaptıktan sonra bunu program hafızasında tutulabilmesi için 1 ve 0’a dönüştürmesi işidir. Şimdi null’ın ne olduğuna gelelim, biz insanlar sayarken hiçbir şey olaması durumunda “0”’ı kullanırız. Ancak 0’ın program hafızasında kapladığı bir yer vardır, çünkü program 0’ı bir karakter olarak görür. Bilgisayar dünyasında hiçbir şey olmama durumuna “null” denir. Yani bir değişken yaratır ancak içinde hiçbir şey tutmazsak ve programa değişkenin içinde ne olduğunu sorduğumuzda bize null yanıtını verir.</p>
+<p>Null kullanımı her zaman istenmeyen bir kullanım değildir. Uygulamada içerisinde o an hiçbir şey tutmak istemediğiniz değişkenler kullanmak isteyebilirsiniz. Ancak bu durum bazı sorunlara yol açabilir, işte null safety bizim bu sorunlarla karşılaşmamızı önleyen yönlendiricidir. Null olmasına izin vereceğimiz değişkene veri tipinden sonra “?” koyarak programın bu değişkenin null olmasına izin vermesini söyleriz. Listelerde hem listenin kendisi hem de içinde tutacağı verilerin null olabileceğini tanımlayabiliriz. Fonksiyonlarda da hem alacağı parametrenin hem de döndüreceği değerin null olabileceğini tanımlayabiliriz.  Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">nullOlamaz</span><span class="p">;</span>  <span class="c1">// non-nullable</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">nullOlabilir</span><span class="p">;</span>  <span class="c1">// nullable</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">nullOlamaz</span><span class="p">);</span> <span class="c1">// program burada hata verir!!</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">nullOlabilir</span><span class="p">);</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span> <span class="n">birListe</span><span class="p">;</span> <span class="c1">// non-nullable(null olamayan yani içi boş olamayan liste)</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span><span class="o">?</span> <span class="n">birNullableListe</span><span class="p">;</span> <span class="c1">// nullable yani içi boş olabilen liste</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="o">?</span><span class="p">&gt;</span> <span class="n">nullableAlabilenListe</span><span class="p">;</span> <span class="c1">// içindeki verilerin null olabildiği liste</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="o">?</span><span class="p">&gt;</span><span class="o">?</span> <span class="n">nullListe</span><span class="p">;</span> <span class="c1">// hem verilerin hem kendisinin boş olabildiği liste</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">birListe</span><span class="p">);</span> <span class="c1">// program burada hata verir!!</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">birNullableListe</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">nullableAlabilenListe</span><span class="p">);</span><span class="c1">// program burada hata verir!!</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">nullListe</span><span class="p">);</span>
+  
+  <span class="kt">int</span><span class="o">?</span> <span class="n">kareAl</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">){</span>
+    <span class="n">i</span><span class="o">!=</span><span class="kc">null</span> <span class="o">?</span> <span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="o">:</span>  <span class="n">print</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">birSayi</span><span class="p">;</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">kareAl</span><span class="p">(</span><span class="n">birSayi</span><span class="o">??</span><span class="mi">3</span><span class="p">));</span>
+  <span class="n">Bisiklet</span><span class="o">?</span> <span class="n">myBisiklet</span><span class="p">;</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">myBisiklet</span><span class="o">?.</span><span class="na">tekerlek</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Bisiklet</span><span class="p">{</span>
+  <span class="kt">int</span> <span class="n">tekerlek</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">vites</span><span class="o">=</span><span class="mi">18</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Eğer null olmaması gereken bir değer gönderecekseniz değişken isminden sonra “??” Koyup sonrasında null gelirse bunu yap diyerek bir kontrol yapıp değeri değiştirebilirsiniz. Örneğin: örnekte fonksiyona göndermeden önce birSayi isimli değişkene 3 değerini atar.</p>
+<p>Eğer gönderilecek değerden sonra “!” eklerseniz programı çalışmaya zorlamış olursunuz. Pek önerilmez. Bunu sadece değerin boş gelmeyeceğinden emin olduğunuz durumlarda kullanmalısınız. Yukarıdaki örneği inceleyin.</p>
+<p>Eğer null nesnenin içinden bir şey göndermeye kalkarsak uygulamanın çökmesine sebep olabiliriz. Bu durumun önlenmesi için “conditional access” isimli bir kullanım var. Null olma ihtimali olan nesnenin isminden sonra “?.” koyarsak program önce nesnenin null olup olmadığını kontrol eder, sonrasında istenilen değeri gönderir. Eğer nesnenin null olduğunu saptarsa null gönderir. Yukarıdaki örneği inceleyin.</p>
+
+<h5 id="kolaylaştırıcılar"><strong><em>Kolaylaştırıcılar</em></strong></h5>
+
+<ul>
+  <li>“=&gt;” kullanımı, çok işlem yapılmayacaksa süslü parantez yerine kullanılabilen yapıdır. Argüman almayan geriye tek bir şey döndüren kodlarımızda da kullanılabilir. Aşağıda örneklendirilmiştir.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">uyari</span><span class="p">()</span><span class="o">=</span><span class="p">&gt;</span><span class="n">print</span><span class="p">(</span><span class="s">'Uyarıldınız.'</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">uyari1</span><span class="p">(){</span><span class="n">print</span><span class="p">(</span><span class="s">'Uyarıldınız.'</span><span class="p">);}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>Ternary Operator</em></strong> = Bir koşullu ifadeyi hızlı bir şekilde tek satırda ifade etmemizi sağlar. Örneğin bir koşullu ifadeyi if-else yapısında şu şekilde ifade ederken “if(sıcaklık&gt;=25){klimayı çalıştır;}else{camı aç;}” aynı ifadeyi ternary operator kullanarak şu şekilde ifade edebiliriz: “sıcaklık&gt;=25 ? Klimayı çalıştır : camı aç;”</li>
+</ul>
+
+<h5 id="ekstralar"><strong><em>Ekstralar</em></strong></h5>
+
+<ul>
+  <li>Programlama yaparken uyulması gereken kurallara Syntax - Söz Dizimi denir.</li>
+</ul>
+
+<h5 id="örnek-metot-kullanımları"><strong><em>Örnek Metot Kullanımları</em></strong></h5>
+
+<ul>
+  <li><strong><em>“.split”</em></strong> = .split diziyi belirtilen ayırıcıya göre bölerek bir liste oluşturan String metodudur. Örnek: Örneğimizde .split text Stringini “-”ye göre bölüp renkler listesini oluşturuyor.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="kt">String</span> <span class="n">text</span><span class="o">=</span> <span class="s">'Mavi-Sarı-Yeşil'</span><span class="p">;</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span><span class="n">renkler</span><span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">split</span><span class="p">(</span><span class="s">'_'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">renkler</span><span class="p">);</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.reversed”</em></strong> = .reversed bir Dart iterable’ını (örneğin, bir liste veya bir dize) tersine çevirir. Bu metot, iterable’ın elemanlarını sondan başa doğru okunabilir bir sıra olacak şekilde ters çevirir. Bu genellikle bir liste elemanlarını ters sıraya koymak veya bir dizeyi ters çevirmek için kullanılır.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">numbers</span><span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+  <span class="n">Iterable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">reversedNumbers</span><span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="na">reversed</span><span class="p">;</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">reversedNumbers</span><span class="o">.</span><span class="na">toList</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.join”</em></strong> = .join bir iterable’ın (liste, dize vb.) elemanlarını belirli bir ayraç veya dize kullanarak birleştirip tek bir dize haline getirir. Bu metot, iterable’ın elemanlarını birleştirirken aralarına isteğe bağlı olarak bir karakter veya dize eklemek için kullanılır. Örneğin:</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span> <span class="p">(){</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span> <span class="n">words</span><span class="o">=</span> <span class="p">[</span><span class="s">'Merhaba'</span><span class="p">,</span> <span class="s">'Dünya'</span><span class="p">,</span> <span class="s">'!'</span><span class="p">];</span>
+  <span class="kt">String</span> <span class="n">resultWithSpace</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="na">join</span><span class="p">(</span><span class="s">' '</span><span class="p">);</span>
+  <span class="kt">String</span> <span class="n">resultWithDash</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="na">join</span><span class="p">(</span><span class="s">'_'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">resulWithSpace</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">resultWithDash</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+      </div>
+
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+  
+
+
+
+    </div>
+  </div>
+</main>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      
+<ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="https://github.com/ahmetince1" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Ahmet Zeki İnce
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">ahmetince1.github.io</a>
+        </span>
+      
+
+      
+
+      
+
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>
