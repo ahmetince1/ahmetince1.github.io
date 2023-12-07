@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <!-- Beautiful Jekyll 6.0.1 | Copyright Dean Attali 2023 -->
 <head>
   <meta charset="utf-8">
@@ -157,12 +157,20 @@
 <div id="beautifuljekyll-search-overlay">
 
   <div id="nav-search-exit" title="Exit search">✕</div>
-  <input type="text" id="nav-search-input" placeholder="Search">
+  <input type="text" id="nav-search-input" placeholder="ARA">
   <ul id="search-results-container"></ul>
   
   <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
   <script>
     var searchjson = '[ \
+       \
+        { \
+          "title"    : "SOLID Prensipleri", \
+          "desc"     : "SOLID Prensipleri", \
+          "category" : "", \
+          "url"      : "/2023-12-06-Solid/", \
+          "date"     : "December  6, 2023" \
+        }, \
        \
         { \
           "title"    : "Temel Dart Dokümanı", \
@@ -268,8 +276,8 @@
 <p>Dart; Google ekibi tarafından geliştirilen, esnek ve güncel bir programlama dilidir.
 Ekip tarafından yapılan tanımlama şöyledir;</p>
 <p>Dart, herhangi bir platformda hızlı uygulamalar geliştirmek için optimize edilmiş bir istemci odaklı dildir. Hedefi, çoklu platform geliştirmesi için en üretken programlama dilini sunmak ve uygulama çerçeveleri için esnek bir yürütme ortamı platformuyla eşleştirmektir.</p>
-<p>Diller, teknik zarflarıyla tanımlanır.Geliştirme sırasında yapılan seçimler, bir dilin yeteneklerini ve güçlü yönlerini şekillendiren unsurlardır. Dart, özellikle istemci geliştirmesine uygun olan bir teknik zarfa sahiptir, geliştirmeyi (sub-second stateful hot reload) ve web, mobil ve masaüstü gibi birçok derleme hedefinde yüksek kaliteli üretim deneyimlerini önceliklendirir.</p>
-<p>Dart aynı zamanda Flutter’ın temelini oluşturur. Dart, Flutter uygulamalarını güçlendiren dil ve çalışma zamanını sağlar, ancak aynı zamanda biçimlendirme, analiz ve kod testi gibi birçok temel geliştirici görevini de destekler."</p>
+<p>Diller, teknik zarflarıyla tanımlanır. Geliştirme sırasında yapılan seçimler, bir dilin yeteneklerini ve güçlü yönlerini şekillendiren unsurlardır. Dart, özellikle istemci geliştirmesine uygun olan bir teknik zarfa sahiptir, geliştirmeyi (sub-second stateful hot reload) ve web, mobil ve masaüstü gibi birçok derleme hedefinde yüksek kaliteli üretim deneyimlerini önceliklendirir.</p>
+<p>Dart aynı zamanda Flutter’ın temelini oluşturur. Dart, Flutter uygulamalarını güçlendiren dil ve çalışma zamanını sağlar, ancak aynı zamanda biçimlendirme, analiz ve kod testi gibi birçok temel geliştirici görevini de destekler.</p>
 
 <h2 id="dart-giriş">Dart Giriş</h2>
 <h5 id="değişken--variable-"><strong><em>Değişken ( Variable )</em></strong></h5>
@@ -354,7 +362,7 @@ Kullanımı aşağıda görüldüğü gibidir. Önce eklemek yapmak istediğimiz
 <span class="p">}</span>
 </code></pre></div></div>
 <ul>
-  <li>Anonim Fonksiyonlar = Fonksiyonlara, ihtiyaç duyduğumuzda çağırmak için isimler veririz. Ancak bazı durumlarda fonksiyonlar aynı anda oluşturulur ve kullanılır ancak başka bir yerde kullanılmaz bu durumlarda isimsiz yani anonim fonksiyonlar kullanırız. Kullanımı şöyledir : “(girdiler){gövdedeki kodlar}”.</li>
+  <li>Anonim Fonksiyonlar = Fonksiyonlara, ihtiyaç duyduğumuzda çağırmak için isimler veririz. Ancak bazı durumlarda fonksiyonlar aynı anda oluşturulur ve kullanılır ancak başka bir yerde kullanılmaz bu durumlarda isimsiz yani anonim fonksiyonlar kullanırız. Kullanımı şöyledir: “(girdiler){gövdedeki kodlar}”.</li>
 </ul>
 
 <p></p>
@@ -400,7 +408,7 @@ Ayrıca koşullu ifadelerde birden fazla koşulu şu operatörleri kullanarak ko
 <p></p>
 
 <h5 id="string-interpolation"><strong><em>String Interpolation</em></strong></h5>
-<p>Dart dilinde de diğer dillerde olduğu gibi ekrana bir şeyler yazdırmak istediğimizde print() fonksiyonunu kullanıyoruz. Nasıl yazdırıldığıyla ilgili şöyle bir örnek verebiliriz “print(‘yazılmasını istediğiniz metin’);”. Görüldüğü üzere fonksiyon parantezleri içerisinde tırnak açarak (çift tırnak açılarak veyahut Dart dilinin özelliklerinden olan tek tırnak kullanımı ile ki tek tırnak kullanımı önerilir.) metin içine yazılır. Ancak fonksiyon tırnak içerisindeki her şeyi metin olarak kabul eder. Metni alt alta yazdırmak istediğimizde alt satırda görünmesini istediğimiz metin önüne “\n”eklemeliyiz ya da üç tırnak kullanmalıyız eğer üç tırnak ekler ve içerisine yazılan metinde satırlar oluşturursak tırnak içindeki metin olduğu gibi yazdırılır.</p>
+<p>Dart dilinde de diğer dillerde olduğu gibi ekrana bir şeyler yazdırmak istediğimizde print() fonksiyonunu kullanıyoruz. Nasıl yazdırıldığıyla ilgili şöyle bir örnek verebiliriz “print(‘yazılmasını istediğiniz metin’);”. Görüldüğü üzere fonksiyon parantezleri içerisinde tırnak açarak (çift tırnak açılarak veyahut Dart dilinin özelliklerinden olan tek tırnak kullanımı ile ki tek tırnak kullanımı önerilir.) metin içine yazılır. Ancak fonksiyon tırnak içerisindeki her şeyi metin olarak kabul eder. Metni alt alta yazdırmak istediğimizde alt satırda görünmesini istediğimiz metin önüne “\n” eklemeliyiz ya da üç tırnak kullanmalıyız eğer üç tırnak ekler ve içerisine yazılan metinde satırlar oluşturursak tırnak içindeki metin olduğu gibi yazdırılır.</p>
 <p>Herhangi bir şekilde değişken, liste elemanı gibi şeyler eklenmesi için String interpolution kullanılmalıdır. Yazdırmak istediğimiz şeyden önce “$” işareti yazarsak fonksiyon bu işaretten sonra bir değişken ya da liste gibi bir şey geleceğini biliyor ve yazdırmamıza izin veriyor. Liste yazdırmak ya da eklenecek şey üzerinden işlem yapmak istersek “${}” şeklinde süslü parantez içerisine yazmalıyız. Örneğin:</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
@@ -417,7 +425,7 @@ Ayrıca koşullu ifadelerde birden fazla koşulu şu operatörleri kullanarak ko
 <p></p>
 
 <h5 id="sınıf-ve-nesneler--classobjects-"><strong><em>Sınıf ve Nesneler ( Class&amp;Objects )</em></strong></h5>
-<p>Class dediğimiz şey aslında bir şablon, bir prototiptir. Flutter, uygulamamızda kullanıcıya göstereceğimiz, etkileşime sokacağımız şeyleri oluştururken şablonlara göre oluşturuyor. Flutter’da classlar ve objeler her yer ve her şeydir. Objeler yani nesneler bu şablonları kullanarak yaratılan gerçek yapılardır. Şöyle bir örnek verelim; bir televizyon fabrikası hayal edersek, burada mühendislerin oluşturduğu örnek televizyon şablonlarını sınıflara benzetirsek. Bu şablonlardan üretilen televizyonları da nesnelere benzetebiliriz. Örnek üzerinden ilerleyecek olursak bu şablon televizyonun; renk, boyut, işlevleri gibi bilgileri içerir. Bu bilgileri değişkenler ile tutarız ve sonradan farklı bilgilere sahip nesneler yaratabiliriz bunlar “instance variables” olarak geçer. İşlevler kısmında televizyonun fonksiyonel özellikleri tutulur ve bunlara “methods” denir. Tek bir şablon ile uygulamamızda istediğimiz kadar nesne yaratabiliriz. Class isimleri büyük harfle başlar ve PascalCase yazım kuralı ile yazılır. Örneğin:</p>
+<p>Class dediğimiz şey aslında bir şablon, bir prototiptir. Flutter, uygulamamızda kullanıcıya göstereceğimiz, etkileşime sokacağımız şeyleri oluştururken şablonlara göre oluşturuyor. Flutter’da classlar ve objeler her yer ve her şeydir. Objeler yani nesneler bu şablonları kullanarak yaratılan gerçek yapılardır. Şöyle bir örnek verelim; bir televizyon fabrikası hayal edersek, burada mühendislerin oluşturduğu örnek televizyon şablonlarını sınıflara benzetirsek. Bu şablonlardan üretilen televizyonları da nesnelere benzetebiliriz. Örnek üzerinden ilerleyecek olursak bu şablon televizyonun; renk, boyut, işlevleri gibi bilgileri içerir. Bu bilgileri değişkenler ile tutarız ve sonradan farklı bilgilere sahip nesneler yaratabiliriz bunlar “variables” olarak geçer. İşlevler kısmında televizyonun fonksiyonel özellikleri tutulur ve bunlara “methods” denir. Tek bir şablon ile uygulamamızda istediğimiz kadar nesne yaratabiliriz. Class isimleri büyük harfle başlar ve PascalCase yazım kuralı ile yazılır. Örneğin:</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
     <span class="n">Televizyon</span> <span class="n">birinciTV</span><span class="o">=</span><span class="n">Televizyon</span><span class="p">(</span><span class="nl">ekranBilgisi:</span><span class="mi">101</span><span class="p">);</span>
@@ -478,7 +486,7 @@ Ayrıca koşullu ifadelerde birden fazla koşulu şu operatörleri kullanarak ko
 </ul>
 
 <p><strong><em>Soyutlama</em></strong></p>
-<p>Soyutlama denince, bir nesnenin kendine has değerde özellikleri olan ve bazı davranışları da gerçekleştirebilen bir veri tipi aklımıza gelsin. Classlar	 soyut birer tanımlamayken, classlar kullanılarak somut nesneler yaratılır. Kodunumuzu daha modüler parçalara ayrımalı ve birbirinden soyutlamalıyız. Örneğin: Aşağıdaki kullanım sayesinde programı modüler bir hale getirmiş oluruz ve bu sayede düzenlemeler yapması da daha kolaylaşmış olur. Örneğin:</p>
+<p>Soyutlama denince, bir nesnenin kendine has değerde özellikleri olan ve bazı davranışları da gerçekleştirebilen bir veri tipi aklımıza gelsin. Classlar soyut birer tanımlamayken, classlar kullanılarak somut nesneler yaratılır. Kodumuzu daha modüler parçalara ayrımalı ve birbirinden soyutlamalıyız. Örneğin: Aşağıdaki kullanım sayesinde programı modüler bir hale getirmiş oluruz ve bu sayede düzenlemeler yapması da daha kolaylaşmış olur. Örneğin:</p>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span><span class="p">(){</span>
 <span class="p">}</span>
@@ -748,7 +756,7 @@ Bunu açıklamadan önce encoding’in açıklamasını yapmalıyız. Program ha
 <p></p>
 
 <ul>
-  <li><strong><em>“.join”</em></strong> = .join bir iterable’ın (liste, dize vb.) elemanlarını belirli bir ayraç veya dize kullanarak birleştirip tek bir dize haline getirir. Bu metot, iterable’ın elemanlarını birleştirirken aralarına isteğe bağlı olarak bir karakter veya dize eklemek için kullanılır. Örneğin:</li>
+  <li><strong><em>“.join”</em></strong> = .join bir iterable’ın (liste vb.) elemanlarını belirli bir ayraç veya dize kullanarak birleştirip tek bir dize haline getirir. Bu metot, iterable’ın elemanlarını birleştirirken aralarına isteğe bağlı olarak bir karakter veya dize eklemek için kullanılır. Örneğin:</li>
 </ul>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span> <span class="p">(){</span>
@@ -759,6 +767,175 @@ Bunu açıklamadan önce encoding’in açıklamasını yapmalıyız. Program ha
   <span class="n">print</span><span class="p">(</span><span class="n">resultWithDash</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.isEmpty” / “.isNotEmpty”</em></strong> = Listenin boş olup olmadığının sorgulanması için kullanılır. Parametre olarak bool değer döndürür.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span> <span class="n">esyalar</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">'Liste boş mu: </span><span class="si">${esyalar.isEmpty}</span><span class="s">'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">'Liste dolu mu: </span><span class="si">${esyalar.isNotEmpty}</span><span class="s">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.add()”</em></strong> = Listeye eleman eklemek için kullanılır. Elemanı listenin sonuna ekler.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span> <span class="n">esyalar</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="n">esyalar</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="s">'koltuk'</span><span class="p">);</span>
+  <span class="n">esyalar</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="s">'tablo'</span><span class="p">);</span>
+  <span class="n">esyalar</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="s">'sandalye'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“Cascade Notation”</em></strong> = Bu bir yazım kolaylığıdır. Yukarıdaki örneği bu şekilde de yazabiliriz. Aynı nesneyi, listeyi etkileyeceksek bu şekilde kullanmayı önerebilirim.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">esyalar</span><span class="p">.</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="s">'koltuk'</span><span class="p">).</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="s">'tablo'</span><span class="p">).</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="s">'sandalye'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.addAll()”</em></strong> = Listeye çoklu eleman eklemek için kullanılır. Elemanı “.add()” metodunda olduğu gibi listenin sonuna ekler.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">esyalar</span><span class="o">.</span><span class="na">addAll</span><span class="p">([</span><span class="s">'masa'</span><span class="p">,</span> <span class="s">'komidin'</span><span class="p">,</span> <span class="s">'televizyon'</span><span class="p">]);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.remove()”</em></strong> = Listeden belli bir elemanı çıkarmak için kullanılır.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">esyalar</span><span class="p">.</span><span class="o">.</span><span class="na">remove</span><span class="p">(</span><span class="s">'masa'</span><span class="p">).</span><span class="o">.</span><span class="na">remove</span><span class="p">(</span><span class="s">'sandalye'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.removeLast()”</em></strong> = Listedeki son elemanı çıkartmak ve bilgisini çekmek için kullanılır. Bu metot listeye son eklenmiş elemanı listeden çıkarken aynı zamanda değişkenmiş gibi hareket ederek
+çağrıldığı yerde yazdırılır. Bu şekilde çıkarılmış eleman bilgisini de elde etmiş oluruz.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">print</span><span class="p">(</span><span class="s">"Son eleman: '</span><span class="si">${esyalar.removeLast()}</span><span class="s">' listeden çıkarıldı."</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Son eleman: '</span><span class="si">${esyalar.removeLast()}</span><span class="s">' listeden çıkarıldı."</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.insert()”</em></strong> = Listeye belli bir index ile ekleme yapmak için kullanılır.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">esyalar</span><span class="o">.</span><span class="na">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">'terlik'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.insertAll()”</em></strong> = Listeye belli bir index ile çoklu ekleme yapmak için kullanılır.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">esyalar</span><span class="o">.</span><span class="na">insertAll</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="s">'televizyon'</span><span class="p">,</span><span class="s">'tabak'</span><span class="p">,</span><span class="s">'telefon'</span><span class="p">]);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.first / .last”</em></strong> = İlk eleman ve son elemanı görmek için kullanılır.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">print</span><span class="p">(</span><span class="s">'ilk eleman: </span><span class="si">${esyalar.first}</span><span class="s">'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">'son eleman: </span><span class="si">${esyalar.last}</span><span class="s">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.elementAt()”</em></strong> = Belirli index numarasına göre eleman görmek için kullanılır. Direkt index verilerek gösterimden farklı olarak bütün iterablelar ile çalışabilmesidir.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">print</span><span class="p">(</span><span class="s">'Index nosu 2 olan eleman: </span><span class="si">${esyalar.elementAt(2)}</span><span class="s">'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">'Index nosu 2 olan eleman: </span><span class="si">${esyalar[2]}</span><span class="s">'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.contains()”</em></strong> = Listede arama yapmak için kullanılır. Değişkenmiş gibi bool değer döndürür.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">print</span><span class="p">(</span><span class="s">"Listede 'tablo' var mı: </span><span class="si">${esyalar.contains('tablo')}</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.forEach()”</em></strong> = Listedeki her eleman üzerinde sırayla işlem yapmak için kullanılır.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="p">);</span>
+  <span class="n">esyalar</span><span class="o">.</span><span class="na">forEach</span><span class="p">((</span><span class="n">element</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">'Listede </span><span class="si">$element</span><span class="s"> da var.'</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.every()”</em></strong> = Listedeki tüm elemanlar bir koşula bağlı mı ? kontrolünü yapar. Geriye bool değer döndürür.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="o">.</span><span class="na">every</span><span class="p">((</span><span class="n">element</span><span class="p">)</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">element</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'t'</span> <span class="o">||</span> <span class="n">element</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'k'</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.any()”</em></strong> = Listedeki elemanlarda en az biri bir koşula bağlı mı ? kontrolünü yapar. Geriye bool bir değer döndürür.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">print</span><span class="p">(</span><span class="n">esyalar</span><span class="o">.</span><span class="na">any</span><span class="p">((</span><span class="n">element</span><span class="p">)</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">element</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'t'</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.reduce()”</em></strong> = Listedeki elemanlarla üst üste işlemler yapmak için kullanılır. Son çıkan değer sum, son çıkan değerin üstüne işlem yapılıyor.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">List</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">nums</span><span class="o">.</span><span class="na">reduce</span><span class="p">((</span><span class="n">sum</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">element</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p></p>
+
+<ul>
+  <li><strong><em>“.isOdd &amp; .isEven”</em></strong> = Listedeki eleman tek mi ? çift mi ? öğrenmek için kullanılır. Geriye bool değer döndürür.</li>
+</ul>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">print</span><span class="p">(</span><span class="s">'nums listesindeki ilk eleman tek mi: </span><span class="si">${nums[0].isOdd}</span><span class="s">'</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">'nums listesindeki ilk eleman çift mi: </span><span class="si">${nums[0].isEven}</span><span class="s">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
 
       </div>
 
@@ -777,6 +954,13 @@ Bunu açıklamadan önce encoding’in açıklamasını yapmalıyız. Program ha
 
       <ul class="pagination blog-pager">
         
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2023-12-06-Solid/" data-toggle="tooltip" data-placement="top" title="SOLID Prensipleri">
+            <span class="d-none d-sm-inline-block">Next Post</span>
+            <i class="fas fa-arrow-right" alt="Next Post"></i>
+          </a>
+        </li>
         
       </ul>
       
@@ -826,8 +1010,6 @@ Bunu açıklamadan önce encoding’in açıklamasını yapmalıyız. Program ha
         <span class="author-site">
           <a href="http://localhost:4000/">ahmetince1.github.io</a>
         </span>
-      
-
       
 
       
