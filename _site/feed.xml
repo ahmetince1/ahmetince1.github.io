@@ -12,10 +12,21 @@
     
     
       <item>
+        <title>Design Patterns</title>
+        <description>
+          Design Patterns ( Tasarım Kalıpları ) - 
+          Design Patterns Nedir ? Tasarım kalıpları, genellikle yazılım tasarımı bağlamında karşılaşılan yaygın sorunlara yönelik tekrar kullanılabilir çözümlerdir. Bu kalıplar, farklı bağlamlarda ortaya çıkan benzer sorunlara uygulanan en iyi uygulamalar olarak bilinir. Gang of Four olarak bilinen yazarların “Elements of Reusable Object-Oriented Software”kitabında 1994 yılında resmi olarak tanıtıldıktan sonra tasarım kalıpları...
+        </description>
+        <pubDate>Wed, 13 Dec 2023 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2023-12-13-DesignPatterns/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023-12-13-DesignPatterns/</guid>
+      </item>
+    
+      <item>
         <title>SOLID Prensipleri</title>
         <description>
           Dart örnekleriyle SOLID - 
-          Solid Yazılım sistemlerinin boyutu ve karmaşıklığı arttıkça, bu sistemlerin bakımı ve ölçeklendirilmesi giderek zorlaşabilir. Bunun nedeni genellikle sistemi katı, kırılgan ve değiştirilmesi zor hale getiren kötü tasarım kararlarıdır. Bu durum &quot;kod çürümesi&quot; olarak bilinen bir olguya yol açabilir; kod tabanı üzerinde çalışmak o kadar zorlaşır ki geliştiriciler değişiklik yapmaktan çekinir...
+          SOLID Yazılım sistemlerinin boyutu ve karmaşıklığı arttıkça, bu sistemlerin bakımı ve ölçeklendirilmesi giderek zorlaşabilir. Bunun nedeni genellikle sistemi katı, kırılgan ve değiştirilmesi zor hale getiren kötü tasarım kararlarıdır. Bu durum &quot;kod çürümesi&quot; olarak bilinen bir olguya yol açabilir; kod tabanı üzerinde çalışmak o kadar zorlaşır ki geliştiriciler değişiklik yapmaktan çekinir...
         </description>
         <pubDate>Wed, 06 Dec 2023 00:00:00 -0500</pubDate>
         <link>http://localhost:4000/2023-12-06-Solid/</link>

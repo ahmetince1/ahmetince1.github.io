@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 6.0.1 | Copyright Dean Attali 2023 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Design Patterns</title>
+
+  
+  
+  <meta name="author" content="Ahmet Zeki İnce">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E59LX36VHM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-E59LX36VHM');
+  </script>
+  
+
+  <meta name="description" content="Design Patterns ( Tasarım Kalıpları )">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Ana Sayfa" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Ana Sayfa">
+  <meta property="og:title" content="Design Patterns">
+  <meta property="og:description" content="Design Patterns ( Tasarım Kalıpları )">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/designPatternsCover.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  
+  <meta property="og:article:author" content="Ahmet Zeki İnce">
+  
+  <meta property="og:article:published_time" content="2023-12-13T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2023-12-13-DesignPatterns/">
+  <link rel="canonical" href="http://localhost:4000/2023-12-13-DesignPatterns/">
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Design Patterns">
+  <meta property="twitter:description" content="Design Patterns ( Tasarım Kalıpları )">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/designPatternsCover.png">
+  
+
+  
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Ana Sayfa</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">HAKKIMDA</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">ARA</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="ARA">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "Design Patterns", \
+          "desc"     : "Design Patterns", \
+          "category" : "", \
+          "url"      : "/2023-12-13-DesignPatterns/", \
+          "date"     : "December 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "SOLID Prensipleri", \
+          "desc"     : "SOLID Prensipleri", \
+          "category" : "", \
+          "url"      : "/2023-12-06-Solid/", \
+          "date"     : "December  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Temel Dart Dokümanı", \
+          "desc"     : "Temel Dart Dokümanı", \
+          "category" : "", \
+          "url"      : "/2023-11-29-Dart/", \
+          "date"     : "November 29, 2023" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Hakkımda", \
+          "desc"     : "Hakkımda", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Hoş Geldiniz", \
+          "desc"     : "Hoş Geldiniz", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  
+
+
+  <div id="header-big-imgs" data-num-img=1
+    
+    
+    
+    
+      data-img-src-1="http://localhost:4000/assets/img/designPatternsCover.png"
+    
+    
+    
+  ></div>
+
+
+<header class="header-section has-img">
+<div class="intro-header  big-img ">
+  
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Design Patterns</h1>
+          
+            
+              <h2 class="post-subheading">Design Patterns ( Tasarım Kalıpları )</h2>
+            
+          
+          
+           
+            
+              By <strong>Ahmet Zeki İnce</strong><br>
+            
+            <span class="post-meta">Posted on December 13, 2023</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <span class='img-desc'></span>
+</div>
+
+
+
+</header>
+
+
+<main class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <div class="blog-post">
+        <h2 id="design-patterns">Design Patterns</h2>
+
+<p><strong><em>Nedir ?</em></strong></p>
+
+<p>Tasarım kalıpları, genellikle yazılım tasarımı bağlamında karşılaşılan yaygın sorunlara yönelik tekrar kullanılabilir çözümlerdir. Bu kalıplar, farklı bağlamlarda ortaya çıkan benzer sorunlara uygulanan en iyi uygulamalar olarak bilinir. Gang of Four olarak bilinen yazarların “Elements of Reusable Object-Oriented Software”kitabında 1994 yılında resmi olarak tanıtıldıktan sonra tasarım kalıpları büyük popülerlik kazandı.</p>
+<p>İlk olarak C++ ve Smalltalk kod örnekleriyle yayınlanan bu kalıplar, özellikle Java ve C# gibi dillerde oldukça popülerdir ve genellikle tüm nesne yönelimli dillerde uygulanabilir. Ancak, bazı fonksiyonel dillerde, örneğin Scala gibi, bazı kalıplar artık gerekli değildir.</p>
+<p>Bu kalıplar 3 ana başlık altında toplanmıştır. Bunlar:</p>
+
+<ul>
+  <li>Creational Design Patterns ( Yaratımsal Tasarım Kalıpları )</li>
+  <li>Behavioral Design Patterns ( Davranışsal Tasarım Kalıpları )</li>
+  <li>Structural Design Patterns ( Yapısal Tasarım Kalıpları )</li>
+</ul>
+<p></p>
+
+<h5 id="creational-design-patterns"><strong><em>Creational Design Patterns</em></strong></h5>
+
+<p>Yaratımsal tasarım kalıpları, yazılım nesnelerini esnek bir yapı kullanarak genel öneriler sunar ve önceden belirlenmiş durumlara bağlı olarak gerekli nesneleri yaratır. Bu tasarım kalıpları, sistem içinde hangi nesnenin çağrılması gerektiğini izlemeden, sistemin uygun nesneyi çağırmasını sağlar. Nesnelerin yaratılmasıyla ilgili esnek bir yaklaşım sunarak, uygulamaya belirli bir durumda nasıl davranılacağı konusunda farkedilebilir bir esneklik kazandırır. Temel amaç, yazılımın içindeki nesnelerin nasıl yaratıldığından bağımsız olarak iyi bir tasarım sağlamaktır.</p>
+<p>Yaratımsal tasarım kalıpları şunlardır:</p>
+
+<p><strong><em>Singleton ( Yegane )</em></strong></p>
+<p>Nesnenin sadece bir defa oluşturulmasını öngören bir mekanizma kurulmak istenildiğinde etkin bir biçimde kullanılabilen bir tasarım kalıbıdır. Oluşturulan sınıftan sadece bir nesne yaratılacak şekilde bir kısıtlama yapabilme olanağı sağlar ve nesneye ilk kez ihtiyaç duyulana kadar yaratılmayabilir. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Singleton</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="n">Singleton</span><span class="o">?</span> <span class="n">_instance</span><span class="p">;</span>
+  <span class="c1">// Constructor özel olarak tanımlanır ve dışarıdan erişime kapatılır.</span>
+  <span class="n">Singleton</span><span class="o">.</span><span class="na">_</span><span class="p">();</span>
+  <span class="c1">// Singleton örneğine erişimi sağlayan metod.</span>
+  <span class="kd">static</span> <span class="n">Singleton</span> <span class="n">getInstance</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_instance</span> <span class="o">??=</span> <span class="n">Singleton</span><span class="o">.</span><span class="na">_</span><span class="p">();</span> <span class="c1">// null ise yeni bir örnek oluştur</span>
+    <span class="k">return</span> <span class="n">_instance</span><span class="o">!</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">static</span> <span class="kd">const</span> <span class="n">isim</span><span class="o">=</span><span class="s">'Ahmet'</span><span class="p">;</span>
+  <span class="c1">// Singleton sınıfının işlevselliği buraya eklenir.</span>
+  <span class="kt">void</span> <span class="n">printMessage</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Singleton instance is created."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Singleton sınıfından bir örnek elde edilir.</span>
+  <span class="n">Singleton</span> <span class="n">singleton1</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="p">();</span>
+  <span class="n">singleton1</span><span class="o">.</span><span class="na">printMessage</span><span class="p">();</span>
+  <span class="n">Singleton</span> <span class="n">singleton2</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="p">();</span>
+  <span class="n">singleton2</span><span class="o">.</span><span class="na">printMessage</span><span class="p">();</span>
+  <span class="c1">// 2 nesne yaratılmış gibi görünse de tek nesne yaratılmıştır.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Factory ( Fabrika )</em></strong></p>
+<p>Fabrika Metodu, yaratımsal tasarım kalıplarından biridir ve nesne yaratım sürecini alt sınıflara bırakarak, nesne oluşturma işlevselliğini genel bir arayüzle birbirinden ayırmayı sağlayan bir tasarım desenidir. Bu desen, bir arayüz veya soyut bir sınıf içinde tanımlanan bir yöntemi, alt sınıflara bırakarak, alt sınıfların bu yöntemi uygulayarak kendi özel nesnelerini oluşturmalarına izin verir. Oluşturulan fabrika yapısı, belirli bir bağlamda doğru sınıfın seçilmesini ve gereken nesnenin yaratılmasını sağlar. Bu sayede, benzer sınıfların yönetimini kolaylaştırır ve esnek bir nesne yaratım süreci sunar. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Product (Ürün)</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Shape</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">draw</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ConcreteProduct (Somut Ürün)</span>
+<span class="kd">class</span> <span class="nc">Circle</span> <span class="kd">implements</span> <span class="n">Shape</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Circle is drawn."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ConcreteProduct (Somut Ürün)</span>
+<span class="kd">class</span> <span class="nc">Rectangle</span> <span class="kd">implements</span> <span class="n">Shape</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Rectangle is drawn."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Creator (Yaratıcı)</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">ShapeFactory</span> <span class="p">{</span>
+  <span class="n">Shape</span> <span class="n">createShape</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ConcreteCreator (Somut Yaratıcı)</span>
+<span class="kd">class</span> <span class="nc">CircleFactory</span> <span class="kd">implements</span> <span class="n">ShapeFactory</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Shape</span> <span class="n">createShape</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Circle</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ConcreteCreator (Somut Yaratıcı)</span>
+<span class="kd">class</span> <span class="nc">RectangleFactory</span> <span class="kd">implements</span> <span class="n">ShapeFactory</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">Shape</span> <span class="n">createShape</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Rectangle</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Kullanıcı (client) sınıf</span>
+  <span class="n">ShapeFactory</span> <span class="n">circleFactory</span> <span class="o">=</span> <span class="n">CircleFactory</span><span class="p">();</span>
+  <span class="n">Shape</span> <span class="n">circle</span> <span class="o">=</span> <span class="n">circleFactory</span><span class="o">.</span><span class="na">createShape</span><span class="p">();</span>
+  <span class="n">circle</span><span class="o">.</span><span class="na">draw</span><span class="p">();</span> <span class="c1">// Çıktı: Circle is drawn.</span>
+  <span class="n">ShapeFactory</span> <span class="n">rectangleFactory</span> <span class="o">=</span> <span class="n">RectangleFactory</span><span class="p">();</span>
+  <span class="n">Shape</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="n">rectangleFactory</span><span class="o">.</span><span class="na">createShape</span><span class="p">();</span>
+  <span class="n">rectangle</span><span class="o">.</span><span class="na">draw</span><span class="p">();</span> <span class="c1">// Çıktı: Rectangle is drawn.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Abstract Factory ( Soyut Fabrika )</em></strong></p>
+<p>Factory design pattern’de tek bir ürün ailesine ait tek bir arayüz mevcutken, abstract factory’de farklı ürün aileleri için farklı arayüzler mevcuttur. Fabrika olarak düşünürsek, Factory DP sadece tek bir ürünün üretildiği fabrika, Abstract Factory DP ise farklı farklı ürünlerin üretildiği fabrika olarak düşünebiliriz. Birden fazla ürün ailesi ile çalışmak durumunda kaldığımızda , ürün ailesi ile istemci tarafını soyutlamak için abstract factory kullanılır. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// interfaceler</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">IPlayer</span><span class="p">{</span>
+  <span class="kt">String</span> <span class="n">GetTopScorer</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">ITeam</span><span class="p">{</span>
+  <span class="kt">String</span> <span class="n">GetTeamColor</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">IFootballFactory</span><span class="p">{</span>
+  <span class="n">ITeam</span> <span class="n">CreateTeam</span><span class="p">();</span>
+  <span class="n">IPlayer</span> <span class="n">CreatePlayer</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="c1">// IFootballFactory interface'ini somutlayan classlar</span>
+<span class="kd">class</span> <span class="nc">BundesligaFactory</span> <span class="kd">implements</span> <span class="n">IFootballFactory</span><span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">IPlayer</span> <span class="n">CreatePlayer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">BundesligaPlayer</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="n">ITeam</span> <span class="n">CreateTeam</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">BorussiaDortmund</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">LaLigaFactory</span> <span class="kd">implements</span> <span class="n">IFootballFactory</span><span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">IPlayer</span> <span class="n">CreatePlayer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">LaLigaPlayer</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="n">ITeam</span> <span class="n">CreateTeam</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">RealMadrid</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">SerieAFactory</span> <span class="kd">implements</span> <span class="n">IFootballFactory</span><span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="n">IPlayer</span> <span class="n">CreatePlayer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">SerieAPlayer</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="n">ITeam</span> <span class="n">CreateTeam</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Juventus</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//ITeam interface'ini somutlayan classlar</span>
+<span class="kd">class</span> <span class="nc">BorussiaDortmund</span> <span class="kd">implements</span> <span class="n">ITeam</span><span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">GetTeamColor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">'Black and Yellow'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Juventus</span> <span class="kd">implements</span> <span class="n">ITeam</span><span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">GetTeamColor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">'Black and White'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">RealMadrid</span> <span class="kd">implements</span> <span class="n">ITeam</span><span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">GetTeamColor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">'Blue and White'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// IPlayer interface'ini somutlaştıran classlar</span>
+<span class="kd">class</span> <span class="nc">BundesligaPlayer</span> <span class="kd">implements</span> <span class="n">IPlayer</span><span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">GetTopScorer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">'Robert Lewandowski'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">LaLigaPlayer</span> <span class="kd">implements</span> <span class="n">IPlayer</span><span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">GetTopScorer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">'Lionel Messi'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">SerieAPlayer</span> <span class="kd">implements</span> <span class="n">IPlayer</span><span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">GetTopScorer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">'Cristiano Ronaldo'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//client class</span>
+<span class="kd">class</span> <span class="nc">FootballWorld</span><span class="p">{</span>
+  <span class="kd">late</span> <span class="n">ITeam</span> <span class="n">_team</span><span class="p">;</span>
+  <span class="kd">late</span> <span class="n">IPlayer</span> <span class="n">_player</span><span class="p">;</span>
+  <span class="n">FootballWorld</span><span class="p">(</span><span class="n">IFootballFactory</span> <span class="kd">factory</span><span class="p">){</span>
+    <span class="n">_team</span> <span class="o">=</span> <span class="kd">factory</span><span class="o">.</span><span class="na">CreateTeam</span><span class="p">();</span>
+    <span class="n">_player</span> <span class="o">=</span> <span class="kd">factory</span><span class="o">.</span><span class="na">CreatePlayer</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="kt">String</span> <span class="n">getFootballTeamColor</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="n">_team</span><span class="o">.</span><span class="na">GetTeamColor</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="kt">String</span> <span class="n">getTopScorer</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="n">_player</span><span class="o">.</span><span class="na">GetTopScorer</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// nesnelerin yaratılışı</span>
+  <span class="n">IFootballFactory</span> <span class="n">germany</span> <span class="o">=</span> <span class="n">BundesligaFactory</span><span class="p">();</span>
+  <span class="n">IFootballFactory</span> <span class="n">spain</span> <span class="o">=</span> <span class="n">LaLigaFactory</span><span class="p">();</span>
+  <span class="n">IFootballFactory</span> <span class="n">italy</span> <span class="o">=</span> <span class="n">SerieAFactory</span><span class="p">();</span>
+  <span class="n">FootballWorld</span> <span class="n">footballWorld</span> <span class="o">=</span><span class="n">FootballWorld</span><span class="p">(</span><span class="n">spain</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">footballWorld</span><span class="o">.</span><span class="na">getFootballTeamColor</span><span class="p">());</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">footballWorld</span><span class="o">.</span><span class="na">getTopScorer</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Builder ( Yapıcı )</em></strong></p>
+<p>Tek ara yüz kullanarak karmaşık bir nesne grubundan gerektiğince parça yaratılmasını sağlar. Nesne grubu kullanıldıkça istenilen şekilde yapılanır ve bu sayede kullanılmayan parçaların gereksiz yere yaratılarak kaynak harcama durumu ortadan kaldırılmış olur. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Pizza sınıfı, builder tasarım deseni kullanılarak oluşturulacak nesneyi temsil eder.</span>
+<span class="kd">class</span> <span class="nc">Pizza</span><span class="p">{</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">_diameter</span><span class="p">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">_name</span><span class="p">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">_cheese</span><span class="p">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">_crust</span><span class="p">;</span>
+  <span class="kt">Set</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span><span class="o">?</span> <span class="n">_topping</span><span class="p">;</span>
+
+<span class="c1">// Pizza sınıfının constructor'ı, PizzaBuilder'dan gelen bilgilerle nesneyi oluşturur.</span>
+<span class="n">Pizza</span><span class="p">(</span><span class="n">PizzaBuilder</span> <span class="n">builder</span><span class="p">){</span>
+  <span class="n">_diameter</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">_diameter</span><span class="p">;</span>
+  <span class="n">_name</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">_name</span><span class="p">;</span>
+  <span class="n">_cheese</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">_cheese</span><span class="p">;</span>
+  <span class="n">_crust</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">_crust</span><span class="p">;</span>
+  <span class="n">_topping</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">_topping</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nd">@override</span>
+<span class="kt">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="o">=</span><span class="p">&gt;</span> <span class="s">'Pizza </span><span class="si">$_diameter</span><span class="s"> </span><span class="si">$_name</span><span class="s"> </span><span class="si">$_cheese</span><span class="s"> </span><span class="si">$_crust</span><span class="s"> </span><span class="si">$_topping</span><span class="s">'</span><span class="p">;</span>
+
+<span class="p">}</span>
+<span class="c1">// PizzaBuilder sınıfı, Pizza sınıfının nesnesini adım adım oluşturmak için kullanılır.</span>
+<span class="kd">class</span> <span class="nc">PizzaBuilder</span><span class="p">{</span>
+  <span class="kt">int</span><span class="o">?</span> <span class="n">_diameter</span><span class="p">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">_name</span><span class="p">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">_cheese</span><span class="p">;</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="n">_crust</span><span class="p">;</span>
+  <span class="kt">Set</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span><span class="o">?</span> <span class="n">_topping</span><span class="p">;</span>
+<span class="c1">// PizzaBuilder'ın constructor'ı, gerekli olan minimum bilgileri alır ve nesnenin temelini oluşturur.</span>
+  <span class="n">PizzaBuilder</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">_diameter</span><span class="p">,</span><span class="k">this</span><span class="o">.</span><span class="na">_name</span><span class="p">);</span>
+<span class="c1">// Cheese özelliğine getter ve setter eklenmiş.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="kd">get</span> <span class="n">cheese</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">_cheese</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="kd">set</span> <span class="n">cheese</span><span class="p">(</span><span class="kt">String</span><span class="o">?</span> <span class="n">value</span><span class="p">){</span>
+    <span class="n">_cheese</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// Crust özelliğine getter ve setter eklenmiş.</span>
+  <span class="kt">String</span><span class="o">?</span> <span class="kd">get</span> <span class="n">crust</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">_crust</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="kd">set</span> <span class="n">crust</span><span class="p">(</span><span class="kt">String</span><span class="o">?</span> <span class="n">value</span><span class="p">){</span>
+    <span class="n">_crust</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// Topping özelliğine getter ve setter eklenmiş.</span>
+  <span class="kt">Set</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span><span class="o">?</span> <span class="kd">get</span> <span class="n">topping</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">_topping</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="kd">set</span> <span class="n">topping</span> <span class="p">(</span><span class="kt">Set</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span><span class="o">?</span> <span class="n">value</span><span class="p">){</span>
+    <span class="n">_topping</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="c1">// PizzaBuilder'ın build metodu, nesneyi oluşturur ve geri döndürür.</span>
+  <span class="n">Pizza</span> <span class="n">build</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="n">Pizza</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Prototype ( Örnek )</em></strong></p>
+<p>Kendi üzerinden yaratılacak nesneler için prototip görevi üstlenen bir yapı sunmaktadır. Diğer bir deyişle, sınıflardan nesne yaratırken yeni nesnelerin baştan yaratılmayıp, mevcutlarını örnek kabul ederek yaratılmasını sağlar. Bu desen sayesinde nesneler, kaynaklar gereksiz yere meşgul edilmeden yaratılırlar. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="kt">String</span> <span class="n">name</span><span class="p">;</span>
+  <span class="kt">String</span> <span class="n">lastName</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+
+  <span class="c1">// Person sınıfının constructor'ı, zorunlu parametrelerle bir nesne oluşturur.</span>
+  <span class="n">Person</span><span class="p">({</span><span class="kd">required</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="p">,</span> <span class="kd">required</span> <span class="k">this</span><span class="o">.</span><span class="na">lastName</span><span class="p">,</span> <span class="kd">required</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="p">});</span>
+
+  <span class="c1">// Clone metodu, mevcut nesnenin bir kopyasını oluşturur ve geri döndürür.</span>
+  <span class="n">Person</span> <span class="n">clone</span><span class="p">()</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name:</span> <span class="n">name</span><span class="p">,</span> <span class="nl">lastName:</span> <span class="n">lastName</span><span class="p">,</span> <span class="nl">age:</span> <span class="n">age</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// İlk olarak bir Person nesnesi oluşturuluyor.</span>
+  <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">name:</span> <span class="s">'Murat'</span><span class="p">,</span> <span class="nl">lastName:</span> <span class="s">'Kiliç'</span><span class="p">,</span> <span class="nl">age:</span> <span class="mi">34</span><span class="p">);</span>
+
+  <span class="c1">// Clone metodu kullanılarak mevcut nesnenin bir kopyası oluşturuluyor.</span>
+  <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="n">person</span><span class="o">.</span><span class="na">clone</span><span class="p">();</span>
+
+  <span class="c1">// Orijinal ve klonlanmış nesnelerin isimleri ekrana yazdırılıyor.</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="na">name</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">person1</span><span class="o">.</span><span class="na">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+      </div>
+
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2023-12-06-Solid/" data-toggle="tooltip" data-placement="top" title="SOLID Prensipleri">
+            <i class="fas fa-arrow-left" alt="Previous Post"></i>
+            <span class="d-none d-sm-inline-block">Previous Post</span>
+          </a>
+        </li>
+        
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+  
+
+
+
+    </div>
+  </div>
+</main>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      
+<ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="https://github.com/ahmetince1" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Ahmet Zeki İnce
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">ahmetince1.github.io</a>
+        </span>
+      
+
+      
+
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>
