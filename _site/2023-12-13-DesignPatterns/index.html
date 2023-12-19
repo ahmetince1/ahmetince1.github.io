@@ -287,7 +287,11 @@
       
 
       <div class="blog-post">
-        <h2 id="design-patterns">Design Patterns</h2>
+        <style>
+p{text-align : justify;}
+</style>
+
+<h2 id="design-patterns">Design Patterns</h2>
 
 <p><strong><em>Nedir ?</em></strong></p>
 
@@ -582,6 +586,1125 @@
   <span class="c1">// Orijinal ve klonlanmış nesnelerin isimleri ekrana yazdırılıyor.</span>
   <span class="n">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="na">name</span><span class="p">);</span>
   <span class="n">print</span><span class="p">(</span><span class="n">person1</span><span class="o">.</span><span class="na">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<h5 id="behavioral-design-patterns"><strong><em>Behavioral Design Patterns</em></strong></h5>
+<p>Belirli görevlerin bu işleri yapmak üzere tasarlanmış nesnelere gönderilmesi ve geri dönen sonuçların işlenmesi davranışsal tasarım kalıpları içerisinde yapılan bir işlemdir. Nesnelerin çalışma zamanında sergiledikleri davranışları değiştirmek için kullanılan tasarım kalıplarından oluşur. Nesneler arasındaki iletişime ve birlikte çalışma biçimlerine odaklanan tasarım kalıplarıdır. Nesneler arasındaki ilişkileri daha dinamik hale getirerek yazılım sistemlerinin esnekliğini ve yeniden kullanımını geliştirmeyi amaçlarlar.</p>
+<p>Davranışsal tasarım kalıpları içerisinde bilinen ve sıklıkla kullanılan kalıplar şu şekildedir:</p>
+
+<p><strong><em>Command Pattern ( Komut Kalıbı )</em></strong></p>
+<p>Bir nesne üzerindeki işlemlerin yapılmasındaki süreci bilmediğimizde ya da kullanılmak istenen nesnenin tanınmadığı durumlarda, komut tasarım kalıbı ile yapılmak istenen işlem bir nesneye dönüştürülerek, alıcı nesne tarafından işlemin yerine getirilmesi amaçlanmaktadır. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Receiver: İsteği gerçekleştiren nesne</span>
+<span class="kd">class</span> <span class="nc">Light</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">turnOn</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Light is ON"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">turnOff</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Light is OFF"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Command arayüzü: İsteği temsil eden arayüz</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Command</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">execute</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ConcreteCommand sınıfları: Belirli bir isteği temsil eden sınıflar</span>
+<span class="kd">class</span> <span class="nc">TurnOnCommand</span> <span class="kd">implements</span> <span class="n">Command</span> <span class="p">{</span>
+  <span class="kd">final</span> <span class="n">Light</span> <span class="n">light</span><span class="p">;</span>
+  <span class="n">TurnOnCommand</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">light</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">execute</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">light</span><span class="o">.</span><span class="na">turnOn</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">TurnOffCommand</span> <span class="kd">implements</span> <span class="n">Command</span> <span class="p">{</span>
+  <span class="kd">final</span> <span class="n">Light</span> <span class="n">light</span><span class="p">;</span>
+  <span class="n">TurnOffCommand</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">light</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">execute</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">light</span><span class="o">.</span><span class="na">turnOff</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Invoker: Komutları çağıran nesne</span>
+<span class="kd">class</span> <span class="nc">RemoteControl</span> <span class="p">{</span>
+  <span class="n">Command</span> <span class="o">?</span><span class="n">_command</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="n">setCommand</span><span class="p">(</span><span class="n">Command</span> <span class="n">command</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_command</span> <span class="o">=</span> <span class="n">command</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">pressButton</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_command</span><span class="o">!.</span><span class="na">execute</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Client kodu</span>
+  <span class="kd">final</span> <span class="n">Light</span> <span class="n">light</span> <span class="o">=</span> <span class="n">Light</span><span class="p">();</span>
+  <span class="kd">final</span> <span class="n">TurnOnCommand</span> <span class="n">turnOnCommand</span> <span class="o">=</span> <span class="n">TurnOnCommand</span><span class="p">(</span><span class="n">light</span><span class="p">);</span>
+  <span class="kd">final</span> <span class="n">TurnOffCommand</span> <span class="n">turnOffCommand</span> <span class="o">=</span> <span class="n">TurnOffCommand</span><span class="p">(</span><span class="n">light</span><span class="p">);</span>
+  <span class="kd">final</span> <span class="n">RemoteControl</span> <span class="n">remote</span> <span class="o">=</span> <span class="n">RemoteControl</span><span class="p">();</span>
+  <span class="n">remote</span><span class="o">.</span><span class="na">setCommand</span><span class="p">(</span><span class="n">turnOnCommand</span><span class="p">);</span>
+  <span class="n">remote</span><span class="o">.</span><span class="na">pressButton</span><span class="p">();</span> <span class="c1">// Light is ON</span>
+  <span class="n">remote</span><span class="o">.</span><span class="na">setCommand</span><span class="p">(</span><span class="n">turnOffCommand</span><span class="p">);</span>
+  <span class="n">remote</span><span class="o">.</span><span class="na">pressButton</span><span class="p">();</span> <span class="c1">// Light is OFF</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Memento Pattern ( Hatıra Kalıbı )</em></strong></p>
+<p>Bir nesnenin, daha önce sahip olduğu durumlardan birine tekrar dönüştürülebilmesi için hatıra tasarım kalıbı kullanılır. Bu sayede belirli durumlardan sonra nesnelerin aldıkları çeşitli durumların kolaylıkla değiştirilebilmesi ve bu durumların farklı sınıflarda tanımlanarak kullanılabilirliğinin arttırılması amaçlanmaktadır. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Originator sınıfı: Durumu değiştiren ve kaydeden sınıf</span>
+<span class="kd">class</span> <span class="nc">Originator</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="kt">String</span> <span class="n">_state</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="n">setState</span><span class="p">(</span><span class="kt">String</span> <span class="n">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Originator: Setting state to </span><span class="si">$state</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">_state</span> <span class="o">=</span> <span class="n">state</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">String</span> <span class="n">getState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_state</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// Memento oluştur</span>
+  <span class="n">Memento</span> <span class="n">createMemento</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Originator: Creating Memento"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">Memento</span><span class="p">(</span><span class="n">_state</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// Memento'yu geri yükle</span>
+  <span class="kt">void</span> <span class="n">restoreMemento</span><span class="p">(</span><span class="n">Memento</span> <span class="n">memento</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Originator: Restoring state from Memento"</span><span class="p">);</span>
+    <span class="n">_state</span> <span class="o">=</span> <span class="n">memento</span><span class="o">.</span><span class="na">getState</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Memento sınıfı: Originator'un durumunu içeren sınıf</span>
+<span class="kd">class</span> <span class="nc">Memento</span> <span class="p">{</span>
+  <span class="kt">String</span> <span class="n">_state</span><span class="p">;</span>
+  <span class="n">Memento</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">_state</span><span class="p">);</span>
+  <span class="kt">String</span> <span class="n">getState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Caretaker sınıfı: Memento'ları saklayan ve geri yükleyen sınıf</span>
+<span class="kd">class</span> <span class="nc">Caretaker</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">Memento</span> <span class="n">_memento</span><span class="p">;</span>
+  <span class="n">Memento</span> <span class="n">getMemento</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_memento</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">setMemento</span><span class="p">(</span><span class="n">Memento</span> <span class="n">memento</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Caretaker: Saving Memento"</span><span class="p">);</span>
+    <span class="n">_memento</span> <span class="o">=</span> <span class="n">memento</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Originator ve Caretaker oluştur</span>
+  <span class="n">Originator</span> <span class="n">originator</span> <span class="o">=</span> <span class="n">Originator</span><span class="p">();</span>
+  <span class="n">Caretaker</span> <span class="n">caretaker</span> <span class="o">=</span> <span class="n">Caretaker</span><span class="p">();</span>
+  <span class="c1">// Originator durumunu değiştir</span>
+  <span class="n">originator</span><span class="o">.</span><span class="na">setState</span><span class="p">(</span><span class="s">"State 1"</span><span class="p">);</span>
+  <span class="c1">// Memento oluştur ve sakla</span>
+  <span class="n">caretaker</span><span class="o">.</span><span class="na">setMemento</span><span class="p">(</span><span class="n">originator</span><span class="o">.</span><span class="na">createMemento</span><span class="p">());</span>
+  <span class="c1">// Originator durumunu değiştir</span>
+  <span class="n">originator</span><span class="o">.</span><span class="na">setState</span><span class="p">(</span><span class="s">"State 2"</span><span class="p">);</span>
+  <span class="c1">// Durumu geri yükle</span>
+  <span class="n">originator</span><span class="o">.</span><span class="na">restoreMemento</span><span class="p">(</span><span class="n">caretaker</span><span class="o">.</span><span class="na">getMemento</span><span class="p">());</span>
+  <span class="c1">// Son durumu yazdır</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Current State: </span><span class="si">${originator.getState()}</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Strategy Pattern ( Strateji Kalıbı )</em></strong></p>
+<p>Bir işlemin yerine getirilmesi için birden fazla metot kullanılıyor olabilir. İhtiyaçlara göre bir metodun seçilip, uygulaması için strateji tasarım kalıbı kullanılmaktadır. Her metot bir sınıf içinde tanımlanabilir. Örneğin:
+</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Strateji arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">OdemeStratejisi</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">odemeYap</span><span class="p">(</span><span class="kt">int</span> <span class="n">tutar</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Somut stratejiler</span>
+<span class="kd">class</span> <span class="nc">KrediKartiOdeme</span> <span class="kd">implements</span> <span class="n">OdemeStratejisi</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="kt">String</span> <span class="n">kartNumarasi</span><span class="p">;</span>
+  <span class="n">KrediKartiOdeme</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">kartNumarasi</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">odemeYap</span><span class="p">(</span><span class="kt">int</span> <span class="n">tutar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'</span><span class="si">$tutar</span><span class="s"> TL tutarında ödeme, kredi kartı ile yapıldı: </span><span class="si">$kartNumarasi</span><span class="s">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">PayPalOdeme</span> <span class="kd">implements</span> <span class="n">OdemeStratejisi</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="kt">String</span> <span class="n">email</span><span class="p">;</span>
+  <span class="n">PayPalOdeme</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">email</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">odemeYap</span><span class="p">(</span><span class="kt">int</span> <span class="n">tutar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'</span><span class="si">$tutar</span><span class="s"> TL tutarında ödeme, PayPal hesabı ile yapıldı: </span><span class="si">$email</span><span class="s">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Bağlam sınıfı</span>
+<span class="kd">class</span> <span class="nc">AlisverisSepeti</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">OdemeStratejisi</span> <span class="n">_odemeStratejisi</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="n">odemeStratejisiBelirle</span><span class="p">(</span><span class="n">OdemeStratejisi</span> <span class="n">odemeStratejisi</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_odemeStratejisi</span> <span class="o">=</span> <span class="n">odemeStratejisi</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">odemeYap</span><span class="p">(</span><span class="kt">int</span> <span class="n">tutar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_odemeStratejisi</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">print</span><span class="p">(</span><span class="s">'Lütfen ödeme stratejisini belirleyin.'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">_odemeStratejisi</span><span class="o">.</span><span class="na">odemeYap</span><span class="p">(</span><span class="n">tutar</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// İstemci kodu</span>
+  <span class="n">AlisverisSepeti</span> <span class="n">sepet</span> <span class="o">=</span> <span class="n">AlisverisSepeti</span><span class="p">();</span>
+  <span class="c1">// Ödeme stratejisi seç ve belirle</span>
+  <span class="n">OdemeStratejisi</span> <span class="n">krediKartiOdeme</span> <span class="o">=</span> <span class="n">KrediKartiOdeme</span><span class="p">(</span><span class="s">'1234-5678-9012-3456'</span><span class="p">);</span>
+  <span class="n">sepet</span><span class="o">.</span><span class="na">odemeStratejisiBelirle</span><span class="p">(</span><span class="n">krediKartiOdeme</span><span class="p">);</span>
+  <span class="c1">// Ödeme yap</span>
+  <span class="n">sepet</span><span class="o">.</span><span class="na">odemeYap</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+  <span class="c1">// Ödeme stratejisini değiştir</span>
+  <span class="n">OdemeStratejisi</span> <span class="n">paypalOdeme</span> <span class="o">=</span> <span class="n">PayPalOdeme</span><span class="p">(</span><span class="s">'john.doe@example.com'</span><span class="p">);</span>
+  <span class="n">sepet</span><span class="o">.</span><span class="na">odemeStratejisiBelirle</span><span class="p">(</span><span class="n">paypalOdeme</span><span class="p">);</span>
+  <span class="c1">// Yeni strateji ile ödeme yap</span>
+  <span class="n">sepet</span><span class="o">.</span><span class="na">odemeYap</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Iterator Pattern ( Tekrarlayıcı Kalıbı )</em></strong></p>
+<p>Tekrarlayıcı tasarım kalıbı ile bir listede yer almakta olan nesnelerin sırasıyla, listenin yapısını ve çalışma tarzının uygulamanın diğer kısımları ile olan bağlantılarını en aza indirmek için uygulamadan soyutlama amaçlı kullanılabilmektedir. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Iterable sınıfını uygulayan bir sınıf</span>
+<span class="kd">class</span> <span class="nc">MyIterable</span> <span class="p">{</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span> <span class="n">_data</span><span class="p">;</span>
+  <span class="n">MyIterable</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">_data</span><span class="p">);</span>
+  <span class="c1">// Iterator döndüren bir metot</span>
+  <span class="n">MyIterator</span> <span class="kd">get</span> <span class="n">iterator</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">MyIterator</span><span class="p">(</span><span class="n">_data</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Iterator sınıfı</span>
+<span class="kd">class</span> <span class="nc">MyIterator</span> <span class="p">{</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span> <span class="n">_data</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">_index</span><span class="p">;</span>
+  <span class="n">MyIterator</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">_data</span><span class="p">)</span> <span class="o">:</span> <span class="n">_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// Bir sonraki elemana geçen ve durumu kontrol eden metot</span>
+  <span class="kt">bool</span> <span class="n">moveNext</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_index</span> <span class="p">&lt;</span> <span class="n">_data</span><span class="o">.</span><span class="na">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_index</span><span class="o">++</span><span class="p">;</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="c1">// Şu anki elemanı döndüren getter metot</span>
+  <span class="kt">String</span> <span class="kd">get</span> <span class="n">current</span> <span class="o">=</span><span class="p">&gt;</span> <span class="n">_data</span><span class="p">[</span><span class="n">_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// MyIterable sınıfını kullanarak bir örnek oluşturuluyor</span>
+  <span class="n">MyIterable</span> <span class="n">myIterable</span> <span class="o">=</span> <span class="n">MyIterable</span><span class="p">([</span><span class="s">"Merhaba"</span><span class="p">,</span> <span class="s">"Dart"</span><span class="p">,</span> <span class="s">"Iterator"</span><span class="p">,</span> <span class="s">"Pattern"</span><span class="p">]);</span>
+  <span class="c1">// Iterator alınıyor</span>
+  <span class="n">MyIterator</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">myIterable</span><span class="o">.</span><span class="na">iterator</span><span class="p">;</span>
+  <span class="c1">// Iterator kullanılarak liste üzerinde dolaşma</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">moveNext</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">current</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>State Pattern ( Durum Kalıbı )</em></strong></p>
+<p>State, bir nesnenin iç durumu değiştiğinde davranışını değiştirmesini sağlayan bir davranışsal tasarım modelidir. Nesne sınıfını değiştirmiş gibi görünür. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// State interface</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">LampState</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">turnOn</span><span class="p">();</span>
+  <span class="kt">void</span> <span class="n">turnOff</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete State - Off State</span>
+<span class="kd">class</span> <span class="nc">OffState</span> <span class="kd">implements</span> <span class="n">LampState</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">turnOn</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Turning the lamp on."</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">turnOff</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"The lamp is already off."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete State - On State</span>
+<span class="kd">class</span> <span class="nc">OnState</span> <span class="kd">implements</span> <span class="n">LampState</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">turnOn</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"The lamp is already on."</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">turnOff</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Turning the lamp off."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Context - Lamp</span>
+<span class="kd">class</span> <span class="nc">Lamp</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">LampState</span> <span class="n">_currentState</span><span class="p">;</span>
+  <span class="n">Lamp</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Başlangıç durumu olarak Off State'i belirle</span>
+    <span class="n">_currentState</span> <span class="o">=</span> <span class="n">OffState</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">setState</span><span class="p">(</span><span class="n">LampState</span> <span class="n">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_currentState</span> <span class="o">=</span> <span class="n">state</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">turnOn</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_currentState</span><span class="o">.</span><span class="na">turnOn</span><span class="p">();</span>
+    <span class="n">setState</span><span class="p">(</span><span class="n">OnState</span><span class="p">());</span> <span class="c1">// Durumu On State olarak güncelle</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">turnOff</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_currentState</span><span class="o">.</span><span class="na">turnOff</span><span class="p">();</span>
+    <span class="n">setState</span><span class="p">(</span><span class="n">OffState</span><span class="p">());</span> <span class="c1">// Durumu Off State olarak güncelle</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Lamp</span> <span class="n">lamp</span> <span class="o">=</span> <span class="n">Lamp</span><span class="p">();</span>
+  <span class="c1">// Lambayı aç</span>
+  <span class="n">lamp</span><span class="o">.</span><span class="na">turnOn</span><span class="p">();</span>
+  <span class="c1">// Lambayı kapat (tekrar açmaya çalışabiliriz, ancak durum kontrol edilir)</span>
+  <span class="n">lamp</span><span class="o">.</span><span class="na">turnOff</span><span class="p">();</span>
+  <span class="c1">// Lambayı tekrar aç</span>
+  <span class="n">lamp</span><span class="o">.</span><span class="na">turnOn</span><span class="p">();</span>
+  <span class="n">lamp</span><span class="o">.</span><span class="na">turnOn</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Chain of Responsibility Pattern ( Sorumluluk Zinciri Kalıbı )</em></strong></p>
+<p>Sorumluluk Zinciri, istekleri bir işleyici zinciri boyunca aktarmanıza olanak tanıyan davranışsal bir tasarım modelidir. İstek alan her işleyici, isteği işleme koymaya ya da zincirdeki bir sonraki işleyiciye aktarmaya karar verir. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// İstek sınıfı</span>
+<span class="kd">class</span> <span class="nc">Request</span> <span class="p">{</span>
+  <span class="kt">String</span> <span class="n">message</span><span class="p">;</span>
+  <span class="n">Request</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// İşleyici arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Handler</span> <span class="p">{</span>
+  <span class="n">Handler</span><span class="o">?</span> <span class="n">_nextHandler</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="n">setNextHandler</span><span class="p">(</span><span class="n">Handler</span> <span class="n">nextHandler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_nextHandler</span> <span class="o">=</span> <span class="n">nextHandler</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">handleRequest</span><span class="p">(</span><span class="n">Request</span> <span class="n">request</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// İşleyici uygulaması</span>
+<span class="kd">class</span> <span class="nc">ConcreteHandler1</span> <span class="kd">extends</span> <span class="n">Handler</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">handleRequest</span><span class="p">(</span><span class="n">Request</span> <span class="n">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="na">message</span><span class="o">.</span><span class="na">contains</span><span class="p">(</span><span class="s">'Handler1'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">print</span><span class="p">(</span><span class="s">'ConcreteHandler1 işledi: </span><span class="si">${request.message}</span><span class="s">'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">_nextHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_nextHandler</span><span class="o">!.</span><span class="na">handleRequest</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">print</span><span class="p">(</span><span class="s">'İşleyici bulunamadı: </span><span class="si">${request.message}</span><span class="s">'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ConcreteHandler2</span> <span class="kd">extends</span> <span class="n">Handler</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">handleRequest</span><span class="p">(</span><span class="n">Request</span> <span class="n">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="na">message</span><span class="o">.</span><span class="na">contains</span><span class="p">(</span><span class="s">'Handler2'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">print</span><span class="p">(</span><span class="s">'ConcreteHandler2 işledi: </span><span class="si">${request.message}</span><span class="s">'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">_nextHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_nextHandler</span><span class="o">!.</span><span class="na">handleRequest</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">print</span><span class="p">(</span><span class="s">'İşleyici bulunamadı: </span><span class="si">${request.message}</span><span class="s">'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ConcreteHandler3</span> <span class="kd">extends</span> <span class="n">Handler</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">handleRequest</span><span class="p">(</span><span class="n">Request</span> <span class="n">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="na">message</span><span class="o">.</span><span class="na">contains</span><span class="p">(</span><span class="s">'Handler3'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">print</span><span class="p">(</span><span class="s">'ConcreteHandler3 işledi: </span><span class="si">${request.message}</span><span class="s">'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">_nextHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_nextHandler</span><span class="o">!.</span><span class="na">handleRequest</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">print</span><span class="p">(</span><span class="s">'İşleyici bulunamadı: </span><span class="si">${request.message}</span><span class="s">'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// İşleyicileri oluştur</span>
+  <span class="n">Handler</span> <span class="n">handler1</span> <span class="o">=</span> <span class="n">ConcreteHandler1</span><span class="p">();</span>
+  <span class="n">Handler</span> <span class="n">handler2</span> <span class="o">=</span> <span class="n">ConcreteHandler2</span><span class="p">();</span>
+  <span class="n">Handler</span> <span class="n">handler3</span> <span class="o">=</span> <span class="n">ConcreteHandler3</span><span class="p">();</span>
+  <span class="c1">// İşleyici zincirini kur</span>
+  <span class="n">handler1</span><span class="o">.</span><span class="na">setNextHandler</span><span class="p">(</span><span class="n">handler2</span><span class="p">);</span>
+  <span class="n">handler2</span><span class="o">.</span><span class="na">setNextHandler</span><span class="p">(</span><span class="n">handler3</span><span class="p">);</span>
+  <span class="c1">// İstekleri işle</span>
+  <span class="n">Request</span> <span class="n">request1</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'Handler1 için istek'</span><span class="p">);</span>
+  <span class="n">Request</span> <span class="n">request2</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'Handler2 için istek'</span><span class="p">);</span>
+  <span class="n">Request</span> <span class="n">request3</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s">'Handler3 için istek'</span><span class="p">);</span>
+  <span class="n">handler1</span><span class="o">.</span><span class="na">handleRequest</span><span class="p">(</span><span class="n">request1</span><span class="p">);</span>
+  <span class="n">handler1</span><span class="o">.</span><span class="na">handleRequest</span><span class="p">(</span><span class="n">request2</span><span class="p">);</span>
+  <span class="n">handler1</span><span class="o">.</span><span class="na">handleRequest</span><span class="p">(</span><span class="n">request3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Mediator Pattern ( Aracı Kalıbı )</em></strong></p>
+<p>Aracı tasarım kalıbı nesnelerin yönetimi ve aralarındaki iletişimin merkezi bir noktadan sağlanması ve yönetilmesi için kullanılmaktadır. Bu nesneler arasındaki bağı azaltmakta ve sadece bir sınıfı, yönetici sınıf olarak diğer sınıfların koordine edilmesinden sorumlu kılar. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Mediator arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">ChatMediator</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">sendMessage</span><span class="p">(</span><span class="kt">String</span> <span class="n">message</span><span class="p">,</span> <span class="n">Participant</span> <span class="n">participant</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Katılımcı sınıfı</span>
+<span class="kd">class</span> <span class="nc">Participant</span> <span class="p">{</span>
+  <span class="kt">String</span> <span class="n">name</span><span class="p">;</span>
+  <span class="n">ChatMediator</span> <span class="n">mediator</span><span class="p">;</span>
+  <span class="n">Participant</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="p">,</span> <span class="k">this</span><span class="o">.</span><span class="na">mediator</span><span class="p">);</span>
+  <span class="kt">void</span> <span class="n">sendMessage</span><span class="p">(</span><span class="kt">String</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'</span><span class="si">$name</span><span class="s">: Mesaj gönderiliyor - </span><span class="si">$message</span><span class="s">'</span><span class="p">);</span>
+    <span class="n">mediator</span><span class="o">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">receiveMessage</span><span class="p">(</span><span class="kt">String</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'</span><span class="si">$name</span><span class="s">: Mesaj alındı - </span><span class="si">$message</span><span class="s">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Grup sohbeti sağlayan Mediator sınıfı</span>
+<span class="kd">class</span> <span class="nc">GroupChatMediator</span> <span class="kd">implements</span> <span class="n">ChatMediator</span> <span class="p">{</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="n">Participant</span><span class="p">&gt;</span> <span class="n">participants</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="kt">void</span> <span class="n">addParticipant</span><span class="p">(</span><span class="n">Participant</span> <span class="n">participant</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">participants</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">participant</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">sendMessage</span><span class="p">(</span><span class="kt">String</span> <span class="n">message</span><span class="p">,</span> <span class="n">Participant</span> <span class="n">sender</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="n">participant</span> <span class="k">in</span> <span class="n">participants</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">participant</span> <span class="o">!=</span> <span class="n">sender</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">participant</span><span class="o">.</span><span class="na">receiveMessage</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Mediator oluştur</span>
+  <span class="kd">var</span> <span class="n">chatMediator</span> <span class="o">=</span> <span class="n">GroupChatMediator</span><span class="p">();</span>
+  <span class="c1">// Katılımcıları oluştur</span>
+  <span class="kd">var</span> <span class="n">participant1</span> <span class="o">=</span> <span class="n">Participant</span><span class="p">(</span><span class="s">'Ali'</span><span class="p">,</span> <span class="n">chatMediator</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="n">participant2</span> <span class="o">=</span> <span class="n">Participant</span><span class="p">(</span><span class="s">'Ayşe'</span><span class="p">,</span> <span class="n">chatMediator</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="n">participant3</span> <span class="o">=</span> <span class="n">Participant</span><span class="p">(</span><span class="s">'Mehmet'</span><span class="p">,</span> <span class="n">chatMediator</span><span class="p">);</span>
+  <span class="c1">// Katılımcıları gruba ekle</span>
+  <span class="n">chatMediator</span><span class="o">.</span><span class="na">addParticipant</span><span class="p">(</span><span class="n">participant1</span><span class="p">);</span>
+  <span class="n">chatMediator</span><span class="o">.</span><span class="na">addParticipant</span><span class="p">(</span><span class="n">participant2</span><span class="p">);</span>
+  <span class="n">chatMediator</span><span class="o">.</span><span class="na">addParticipant</span><span class="p">(</span><span class="n">participant3</span><span class="p">);</span>
+  <span class="c1">// Mesaj gönderme</span>
+  <span class="n">participant1</span><span class="o">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">'Selam herkese!'</span><span class="p">);</span>
+  <span class="n">participant2</span><span class="o">.</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">'Merhaba, nasılsınız?'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Observer Pattern ( Gözlemci Kalıbı )</em></strong></p>
+<p>Uygulama içerisinde bir nesnede meydana gelen değişikliklerden haberdar olup üzerinde belli metotları çalıştırıp değişlikler yapmak isteyen diğer nesneler bulunabilmektedir. Bu durumda haberdar olmak isteyen nesneler diğer nesne ile ilişkilendirilerek, ilişkili oldukları nesnede meydana gelen değişikliklerden haberdar edilebilmektedirler. İlişki içerisinde olan nesne ile bağlantı iptal edilerek, ilişkili olduğu nesne ile arasındaki bağ sonlandırılabilir. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Observer arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Observer</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="kt">String</span> <span class="n">news</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Observable (Gözlemlenebilir) sınıfı</span>
+<span class="kd">class</span> <span class="nc">NewsAgency</span> <span class="p">{</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="n">Observer</span><span class="p">&gt;</span> <span class="n">_observers</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="kt">String</span> <span class="n">_latestNews</span> <span class="o">=</span> <span class="s">''</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_observers</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">removeObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_observers</span><span class="o">.</span><span class="na">remove</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">setNews</span><span class="p">(</span><span class="kt">String</span> <span class="n">news</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_latestNews</span> <span class="o">=</span> <span class="n">news</span><span class="p">;</span>
+    <span class="n">notifyObservers</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">notifyObservers</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="n">observer</span> <span class="k">in</span> <span class="n">_observers</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">observer</span><span class="o">.</span><span class="na">update</span><span class="p">(</span><span class="n">_latestNews</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete Observer sınıfı</span>
+<span class="kd">class</span> <span class="nc">NewsChannel</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="p">{</span>
+  <span class="kt">String</span> <span class="n">channelName</span><span class="p">;</span>
+  <span class="n">NewsChannel</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">channelName</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="kt">String</span> <span class="n">news</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'</span><span class="si">$channelName</span><span class="s">: Yeni haber - </span><span class="si">$news</span><span class="s">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Observable nesne oluştur</span>
+  <span class="n">NewsAgency</span> <span class="n">newsAgency</span> <span class="o">=</span> <span class="n">NewsAgency</span><span class="p">();</span>
+  <span class="c1">// Observer'ları oluştur</span>
+  <span class="n">Observer</span> <span class="n">channel1</span> <span class="o">=</span> <span class="n">NewsChannel</span><span class="p">(</span><span class="s">'Kanal 1'</span><span class="p">);</span>
+  <span class="n">Observer</span> <span class="n">channel2</span> <span class="o">=</span> <span class="n">NewsChannel</span><span class="p">(</span><span class="s">'Kanal 2'</span><span class="p">);</span>
+  <span class="n">Observer</span> <span class="n">channel3</span> <span class="o">=</span> <span class="n">NewsChannel</span><span class="p">(</span><span class="s">'Kanal 3'</span><span class="p">);</span>
+  <span class="c1">// Observer'ları Observable nesneye ekle</span>
+  <span class="n">newsAgency</span><span class="o">.</span><span class="na">addObserver</span><span class="p">(</span><span class="n">channel1</span><span class="p">);</span>
+  <span class="n">newsAgency</span><span class="o">.</span><span class="na">addObserver</span><span class="p">(</span><span class="n">channel2</span><span class="p">);</span>
+  <span class="n">newsAgency</span><span class="o">.</span><span class="na">addObserver</span><span class="p">(</span><span class="n">channel3</span><span class="p">);</span>
+  <span class="c1">// Haber güncellemesi ve bildirim</span>
+  <span class="n">newsAgency</span><span class="o">.</span><span class="na">setNews</span><span class="p">(</span><span class="s">'Dünya genelinde yeni bir keşif yapıldı!'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Template Pattern ( Şablon Kalıbı )</em></strong></p>
+<p>Template tasarım deseni, bir algoritmanın genel yapısını belirleyen bir şablon sağlar, ancak bu algoritmanın belirli adımları, alt sınıflar tarafından özelleştirilecek şekilde bırakır. Bu sayede, temel algoritma aynı kalırken, alt sınıflar kendilerine özgü implementasyonları ekleyebilir ve böylece genel algoritmanın davranışını değiştirebilir. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Template sınıfı</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">OrderTemplate</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">selectProducts</span><span class="p">();</span>
+  <span class="kt">void</span> <span class="n">makePayment</span><span class="p">();</span>
+  <span class="kt">void</span> <span class="n">ship</span><span class="p">();</span>
+  <span class="c1">// Template method</span>
+  <span class="kt">void</span> <span class="n">processOrder</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">selectProducts</span><span class="p">();</span>
+    <span class="n">makePayment</span><span class="p">();</span>
+    <span class="n">ship</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete Template sınıfı</span>
+<span class="kd">class</span> <span class="nc">OnlineOrder</span> <span class="kd">extends</span> <span class="n">OrderTemplate</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">selectProducts</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Online: Ürünleri seç"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">makePayment</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Online: Ödemeyi yap"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">ship</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Online: Ürünleri gönder"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete Template sınıfı</span>
+<span class="kd">class</span> <span class="nc">InStoreOrder</span> <span class="kd">extends</span> <span class="n">OrderTemplate</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">selectProducts</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Mağazada: Ürünleri seç"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">makePayment</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Mağazada: Ödemeyi yap"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">ship</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Mağazada: Ürünleri teslim al"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Online sipariş oluştur ve işle</span>
+  <span class="n">OrderTemplate</span> <span class="n">onlineOrder</span> <span class="o">=</span> <span class="n">OnlineOrder</span><span class="p">();</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Online Sipariş:"</span><span class="p">);</span>
+  <span class="n">onlineOrder</span><span class="o">.</span><span class="na">processOrder</span><span class="p">();</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">---------------------</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="c1">// Mağazada sipariş oluştur ve işle</span>
+  <span class="n">OrderTemplate</span> <span class="n">inStoreOrder</span> <span class="o">=</span> <span class="n">InStoreOrder</span><span class="p">();</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Mağazada Sipariş:"</span><span class="p">);</span>
+  <span class="n">inStoreOrder</span><span class="o">.</span><span class="na">processOrder</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Visitor Pattern ( Ziyaretçi Kalıbı )</em></strong></p>
+<p>Hiyerarşik yapıda ve farklı tipte olan nesnelerin mevcut yapılarını değiştirmeden işlem yapabilmek amacıyla kullanılır. İşlemi ziyaretçi (visitor) nesneler yapar. Ziyaretçi nesneler sayesinde yeni metotlar tanımlanabilir ve ilgili nesneler bu ziyaretçi nesneye parametre olarak aktarılıp işlem yapılır. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Element arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Expression</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">accept</span><span class="p">(</span><span class="n">ExpressionVisitor</span> <span class="n">visitor</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete Element sınıfı</span>
+<span class="kd">class</span> <span class="nc">NumberExpression</span> <span class="kd">implements</span> <span class="n">Expression</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+  <span class="n">NumberExpression</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">accept</span><span class="p">(</span><span class="n">ExpressionVisitor</span> <span class="n">visitor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">visitor</span><span class="o">.</span><span class="na">visitNumber</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete Element sınıfı</span>
+<span class="kd">class</span> <span class="nc">AdditionExpression</span> <span class="kd">implements</span> <span class="n">Expression</span> <span class="p">{</span>
+  <span class="n">Expression</span> <span class="n">left</span><span class="p">;</span>
+  <span class="n">Expression</span> <span class="n">right</span><span class="p">;</span>
+  <span class="n">AdditionExpression</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">left</span><span class="p">,</span> <span class="k">this</span><span class="o">.</span><span class="na">right</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">accept</span><span class="p">(</span><span class="n">ExpressionVisitor</span> <span class="n">visitor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">visitor</span><span class="o">.</span><span class="na">visitAddition</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete Element sınıfı</span>
+<span class="kd">class</span> <span class="nc">MultiplicationExpression</span> <span class="kd">implements</span> <span class="n">Expression</span> <span class="p">{</span>
+  <span class="n">Expression</span> <span class="n">left</span><span class="p">;</span>
+  <span class="n">Expression</span> <span class="n">right</span><span class="p">;</span>
+  <span class="n">MultiplicationExpression</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">left</span><span class="p">,</span> <span class="k">this</span><span class="o">.</span><span class="na">right</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">accept</span><span class="p">(</span><span class="n">ExpressionVisitor</span> <span class="n">visitor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">visitor</span><span class="o">.</span><span class="na">visitMultiplication</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Visitor arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">ExpressionVisitor</span> <span class="p">{</span>
+  <span class="kd">get</span> <span class="n">result</span> <span class="o">=</span><span class="p">&gt;</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="n">visitNumber</span><span class="p">(</span><span class="n">NumberExpression</span> <span class="n">number</span><span class="p">);</span>
+  <span class="kt">void</span> <span class="n">visitAddition</span><span class="p">(</span><span class="n">AdditionExpression</span> <span class="n">addition</span><span class="p">);</span>
+  <span class="kt">void</span> <span class="n">visitMultiplication</span><span class="p">(</span><span class="n">MultiplicationExpression</span> <span class="n">multiplication</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete Visitor sınıfı</span>
+<span class="kd">class</span> <span class="nc">EvaluateVisitor</span> <span class="kd">implements</span> <span class="n">ExpressionVisitor</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">visitNumber</span><span class="p">(</span><span class="n">NumberExpression</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">number</span><span class="o">.</span><span class="na">value</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">visitAddition</span><span class="p">(</span><span class="n">AdditionExpression</span> <span class="n">addition</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">addition</span><span class="o">.</span><span class="na">left</span><span class="o">.</span><span class="na">accept</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">leftResult</span> <span class="o">=</span> <span class="n">result</span><span class="p">;</span>
+    <span class="n">addition</span><span class="o">.</span><span class="na">right</span><span class="o">.</span><span class="na">accept</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">rightResult</span> <span class="o">=</span> <span class="n">result</span><span class="p">;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">leftResult</span> <span class="o">+</span> <span class="n">rightResult</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">visitMultiplication</span><span class="p">(</span><span class="n">MultiplicationExpression</span> <span class="n">multiplication</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">multiplication</span><span class="o">.</span><span class="na">left</span><span class="o">.</span><span class="na">accept</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">leftResult</span> <span class="o">=</span> <span class="n">result</span><span class="p">;</span>
+    <span class="n">multiplication</span><span class="o">.</span><span class="na">right</span><span class="o">.</span><span class="na">accept</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">rightResult</span> <span class="o">=</span> <span class="n">result</span><span class="p">;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">leftResult</span> <span class="o">*</span> <span class="n">rightResult</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Ağaç oluştur</span>
+  <span class="n">Expression</span> <span class="n">expression</span> <span class="o">=</span> <span class="n">AdditionExpression</span><span class="p">(</span>
+    <span class="n">NumberExpression</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+    <span class="n">MultiplicationExpression</span><span class="p">(</span>
+      <span class="n">NumberExpression</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+      <span class="n">NumberExpression</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+    <span class="p">),</span>
+  <span class="p">);</span>
+  <span class="c1">// EvaluateVisitor kullanarak ağacı gezmek</span>
+  <span class="n">ExpressionVisitor</span> <span class="n">evaluateVisitor</span> <span class="o">=</span> <span class="n">EvaluateVisitor</span><span class="p">();</span>
+  <span class="n">expression</span><span class="o">.</span><span class="na">accept</span><span class="p">(</span><span class="n">evaluateVisitor</span><span class="p">);</span>
+
+  <span class="n">print</span><span class="p">(</span><span class="s">'Sonuç: </span><span class="si">${evaluateVisitor.result}</span><span class="s">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Interpreter Pattern ( Yorumlayıcı Kalıbı )</em></strong></p>
+<p>Sıklıkla karşılaşılan belli mantıksal kalıpların bir bütün içerisinde yer almasını sağlamak amacıyla kullanılmaktadır. Dil bilgisi kuralları gibi kalıplar içerisinde yer alan ifadelerin yorumlanması amacıyla kullanılması tercih edilmektedir. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Abstract Expression sınıfı</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Expression</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">interpret</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Terminal Expression sınıfı</span>
+<span class="kd">class</span> <span class="nc">NumberExpression</span> <span class="kd">implements</span> <span class="n">Expression</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="kt">int</span> <span class="n">_number</span><span class="p">;</span>
+  <span class="n">NumberExpression</span><span class="p">(</span><span class="kt">int</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_number</span> <span class="o">=</span> <span class="n">number</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">int</span> <span class="n">interpret</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_number</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Nonterminal Expression sınıfı</span>
+<span class="kd">class</span> <span class="nc">AdditionExpression</span> <span class="kd">implements</span> <span class="n">Expression</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">Expression</span> <span class="n">_left</span><span class="p">;</span>
+  <span class="kd">late</span> <span class="n">Expression</span> <span class="n">_right</span><span class="p">;</span>
+  <span class="n">AdditionExpression</span><span class="p">(</span><span class="n">Expression</span> <span class="n">left</span><span class="p">,</span> <span class="n">Expression</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_left</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+    <span class="n">_right</span> <span class="o">=</span> <span class="n">right</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">int</span> <span class="n">interpret</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_left</span><span class="o">.</span><span class="na">interpret</span><span class="p">()</span> <span class="o">+</span> <span class="n">_right</span><span class="o">.</span><span class="na">interpret</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Nonterminal Expression sınıfı</span>
+<span class="kd">class</span> <span class="nc">SubtractionExpression</span> <span class="kd">implements</span> <span class="n">Expression</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">Expression</span> <span class="n">_left</span><span class="p">;</span>
+  <span class="kd">late</span> <span class="n">Expression</span> <span class="n">_right</span><span class="p">;</span>
+  <span class="n">SubtractionExpression</span><span class="p">(</span><span class="n">Expression</span> <span class="n">left</span><span class="p">,</span> <span class="n">Expression</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_left</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+    <span class="n">_right</span> <span class="o">=</span> <span class="n">right</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">int</span> <span class="n">interpret</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_left</span><span class="o">.</span><span class="na">interpret</span><span class="p">()</span> <span class="o">-</span> <span class="n">_right</span><span class="o">.</span><span class="na">interpret</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Context sınıfı</span>
+<span class="kd">class</span> <span class="nc">Context</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="kt">String</span> <span class="n">_input</span><span class="p">;</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="n">Expression</span><span class="p">&gt;</span> <span class="n">_expressions</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="n">Context</span><span class="p">(</span><span class="kt">String</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_input</span> <span class="o">=</span> <span class="n">input</span><span class="p">;</span>
+    <span class="kt">List</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">split</span><span class="p">(</span><span class="s">' '</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">tokens</span><span class="o">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">String</span> <span class="n">token</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">token</span> <span class="o">==</span> <span class="s">'+'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Expression</span> <span class="n">left</span> <span class="o">=</span> <span class="n">_expressions</span><span class="o">.</span><span class="na">removeLast</span><span class="p">();</span>
+        <span class="n">Expression</span> <span class="n">right</span> <span class="o">=</span> <span class="n">NumberExpression</span><span class="p">(</span><span class="kt">int</span><span class="o">.</span><span class="na">parse</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="o">++</span><span class="n">i</span><span class="p">]));</span>
+        <span class="n">_expressions</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">AdditionExpression</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">));</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">token</span> <span class="o">==</span> <span class="s">'-'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Expression</span> <span class="n">left</span> <span class="o">=</span> <span class="n">_expressions</span><span class="o">.</span><span class="na">removeLast</span><span class="p">();</span>
+        <span class="n">Expression</span> <span class="n">right</span> <span class="o">=</span> <span class="n">NumberExpression</span><span class="p">(</span><span class="kt">int</span><span class="o">.</span><span class="na">parse</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="o">++</span><span class="n">i</span><span class="p">]));</span>
+        <span class="n">_expressions</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">SubtractionExpression</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">));</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">_expressions</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">NumberExpression</span><span class="p">(</span><span class="kt">int</span><span class="o">.</span><span class="na">parse</span><span class="p">(</span><span class="n">token</span><span class="p">)));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="kt">int</span> <span class="n">interpret</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">Expression</span> <span class="n">expression</span> <span class="k">in</span> <span class="n">_expressions</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">expression</span><span class="o">.</span><span class="na">interpret</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_expressions</span><span class="o">.</span><span class="na">last</span><span class="o">.</span><span class="na">interpret</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// İfade oluştur</span>
+  <span class="kd">var</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="p">(</span><span class="s">'3 + 5 - 2'</span><span class="p">);</span>
+  <span class="c1">// İfadeyi yorumla (interpret)</span>
+  <span class="kd">var</span> <span class="n">result</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">interpret</span><span class="p">();</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">'Sonuç: </span><span class="si">$result</span><span class="s">'</span><span class="p">);</span> <span class="c1">// Sonuç: 6</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<h5 id="structural-design-patterns"><strong><em>Structural Design Patterns</em></strong></h5>
+<p>Yapısal tasarım kalıpları, nesnelerin ve sınıfların daha büyük yapılar halinde nasıl bir araya getirileceğini ve bu yapıların esnek ve verimli tutulacağını açıklar. Yapısal kalıplar, kendi içlerinde sınıf yapı kalıpları ve nesne yapı kalıpları olmak üzere ikiye ayrılır. Bunlardan sınıf yapı kalıpları nesne tabanlı programcılığın (object oriented programming)dört temel unsurundan biri olan kalıtımı (inheritance) kullanarak sınıf arayüzlerini (interface) yada uygulamaları birleştirerek yazılım projelerindeki yapıları genişletir. Nesne yapı kalıpları ise kullanıcılara nesnelerin kendi sahip olduklarından başka işlevler kazanmaları için bu nesnelerin birleştirilip yeni nesneler oluşturulması konusunda yardımcı olur. Yapısal kalıplar ayrıca yazılım mühendislerinin uygulamalar geliştirdikleri projelerinde ihtiyaç duydukları çeşitli durumlarda kullanılmak üzere yediye ayrılır. Yapısal kalıplar yazılım projelerinin tasarım aşamalarında veya bu projelerin genişletilme aşamalarında kullanılabilirler. Temel olarak bu kalıplardan bazıları sadece projelerin başlangıç aşamalarında kullanılmak üzere özelleştirilmişseler de yapısal kalıplar grubuna ait olan tüm tasarım kalıpları kullanılacakları yer ve projelerin durumlarına göre her biri bir diğerinin alternatifi olarak iş görebilirler. Yapısal kalıplar kendi içinde yedi alt başlığa ayrılır. Bunlar:</p>
+
+<p><strong><em>Adapter Pattern ( Adaptör Kalıp )</em></strong></p>
+<p>Adaptör kalıp sadece bir sınıfa (class) özel olan arayüzleri diğer sınıflarla uyumlu arayüzler haline getirir. Adaptörler uyumlu olmayan arayüzler sebebiyle birbirleri ile çalışamayan sınıflara da birbirleri ile çalışma imkanı sunarlar. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Hedef arayüz</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Target</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">request</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Hedef arayüzü uygulayan sınıf</span>
+<span class="kd">class</span> <span class="nc">ConcreteTarget</span> <span class="kd">implements</span> <span class="n">Target</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">request</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"ConcreteTarget: İstek gerçekleşiyor."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Var olan sınıf</span>
+<span class="kd">class</span> <span class="nc">Adaptee</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">specificRequest</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Adaptee: Özel istek gerçekleşiyor."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Adapter sınıfı</span>
+<span class="kd">class</span> <span class="nc">Adapter</span> <span class="kd">implements</span> <span class="n">Target</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">Adaptee</span> <span class="n">_adaptee</span><span class="p">;</span>
+  <span class="n">Adapter</span><span class="p">(</span><span class="n">Adaptee</span> <span class="n">adaptee</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">_adaptee</span> <span class="o">=</span> <span class="n">adaptee</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">request</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Adapter: Adaptör, isteği uygun hale getiriyor."</span><span class="p">);</span>
+    <span class="n">_adaptee</span><span class="o">.</span><span class="na">specificRequest</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Var olan sınıfın kullanımı</span>
+  <span class="n">Adaptee</span> <span class="n">adaptee</span> <span class="o">=</span> <span class="n">Adaptee</span><span class="p">();</span>
+  <span class="n">adaptee</span><span class="o">.</span><span class="na">specificRequest</span><span class="p">();</span>
+  <span class="c1">// Hedef arayüzü kullanan sınıf</span>
+  <span class="n">Target</span> <span class="n">target</span> <span class="o">=</span> <span class="n">ConcreteTarget</span><span class="p">();</span>
+  <span class="n">target</span><span class="o">.</span><span class="na">request</span><span class="p">();</span>
+  <span class="c1">// Adaptörü kullanarak var olan sınıfı hedef arayüzü ile uyumlu hale getirme</span>
+  <span class="n">Adapter</span> <span class="n">adapter</span> <span class="o">=</span> <span class="n">Adapter</span><span class="p">(</span><span class="n">adaptee</span><span class="p">);</span>
+  <span class="n">adapter</span><span class="o">.</span><span class="na">request</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Bridge Pattern ( Köprü Kalıp )</em></strong></p>
+<p>Köprü, büyük bir sınıfı veya birbiriyle yakından ilişkili sınıflar kümesini birbirinden bağımsız olarak geliştirilebilen iki ayrı hiyerarşiye (soyutlama ve uygulama) bölmenizi sağlayan yapısal bir tasarım modelidir. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Uygulama arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Platform</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">executeCode</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Soyut implementasyon arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Implementation</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">execute</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// İlk soyut implementasyon sınıfı</span>
+<span class="kd">class</span> <span class="nc">AndroidImplementation</span> <span class="kd">implements</span> <span class="n">Implementation</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">execute</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Android: Kodu çalıştırıyor"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// İkinci soyut implementasyon sınıfı</span>
+<span class="kd">class</span> <span class="nc">IOSImplementation</span> <span class="kd">implements</span> <span class="n">Implementation</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">execute</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"iOS: Kodu çalıştırıyor"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Uygulama arayüzünü uygulayan sınıf</span>
+<span class="kd">class</span> <span class="nc">MobileApp</span> <span class="kd">implements</span> <span class="n">Platform</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">Implementation</span> <span class="n">_implementation</span><span class="p">;</span>
+  <span class="n">MobileApp</span><span class="p">(</span><span class="n">Implementation</span> <span class="n">implementation</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">_implementation</span> <span class="o">=</span> <span class="n">implementation</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">executeCode</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_implementation</span><span class="o">.</span><span class="na">execute</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Android uygulaması</span>
+  <span class="n">MobileApp</span> <span class="n">androidApp</span> <span class="o">=</span> <span class="n">MobileApp</span><span class="p">(</span><span class="n">AndroidImplementation</span><span class="p">());</span>
+  <span class="n">androidApp</span><span class="o">.</span><span class="na">executeCode</span><span class="p">();</span>
+  <span class="c1">// iOS uygulaması</span>
+  <span class="n">MobileApp</span> <span class="n">iosApp</span> <span class="o">=</span> <span class="n">MobileApp</span><span class="p">(</span><span class="n">IOSImplementation</span><span class="p">());</span>
+  <span class="n">iosApp</span><span class="o">.</span><span class="na">executeCode</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Composite Pattern ( Bileşik Kalıp )</em></strong></p>
+<p>Bileşik kalıp, birbirinden farklı bir grup nesnenin sanki tek bir bütünmüş gibi davranmasını sağlar. Bileşik kalıpların görevleri nesneleri bir ağaç yapısında birleştirip uygulamanın genelindeki parça bütün ilişkisini yeniden düzenleyip şekillendirmektir. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Component arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Component</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">operation</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="c1">// Leaf sınıfı</span>
+<span class="kd">class</span> <span class="nc">Leaf</span> <span class="kd">extends</span> <span class="n">Component</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="kt">String</span> <span class="n">_name</span><span class="p">;</span>
+  <span class="n">Leaf</span><span class="p">(</span><span class="kt">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">_name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">operation</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Leaf: </span><span class="si">$_name</span><span class="s"> işlemi gerçekleşiyor."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Composite sınıfı</span>
+<span class="kd">class</span> <span class="nc">Composite</span> <span class="kd">extends</span> <span class="n">Component</span> <span class="p">{</span>
+  <span class="kt">List</span><span class="p">&lt;</span><span class="n">Component</span><span class="p">&gt;</span> <span class="n">_children</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="kt">void</span> <span class="n">add</span><span class="p">(</span><span class="n">Component</span> <span class="n">component</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_children</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">component</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">remove</span><span class="p">(</span><span class="n">Component</span> <span class="n">component</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_children</span><span class="o">.</span><span class="na">remove</span><span class="p">(</span><span class="n">component</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">operation</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Composite: İşlem başlatılıyor."</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">Component</span> <span class="n">component</span> <span class="k">in</span> <span class="n">_children</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">component</span><span class="o">.</span><span class="na">operation</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Composite: İşlem tamamlandı."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Leaf nesneleri</span>
+  <span class="n">Leaf</span> <span class="n">leaf1</span> <span class="o">=</span> <span class="n">Leaf</span><span class="p">(</span><span class="s">"Leaf 1"</span><span class="p">);</span>
+  <span class="n">Leaf</span> <span class="n">leaf2</span> <span class="o">=</span> <span class="n">Leaf</span><span class="p">(</span><span class="s">"Leaf 2"</span><span class="p">);</span>
+  <span class="n">Leaf</span> <span class="n">leaf3</span> <span class="o">=</span> <span class="n">Leaf</span><span class="p">(</span><span class="s">"Leaf 3"</span><span class="p">);</span>
+  <span class="c1">// Composite nesneleri</span>
+  <span class="n">Composite</span> <span class="n">composite1</span> <span class="o">=</span> <span class="n">Composite</span><span class="p">();</span>
+  <span class="n">Composite</span> <span class="n">composite2</span> <span class="o">=</span> <span class="n">Composite</span><span class="p">();</span>
+  <span class="c1">// Composite'a Leaf nesnelerini ekleme</span>
+  <span class="n">composite1</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">leaf1</span><span class="p">);</span>
+  <span class="n">composite1</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">leaf2</span><span class="p">);</span>
+  <span class="n">composite2</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">leaf3</span><span class="p">);</span>
+  <span class="c1">// Ana Composite'a diğer Composite nesnelerini ekleme</span>
+  <span class="n">Composite</span> <span class="n">mainComposite</span> <span class="o">=</span> <span class="n">Composite</span><span class="p">();</span>
+  <span class="n">mainComposite</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">composite1</span><span class="p">);</span>
+  <span class="n">mainComposite</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="n">composite2</span><span class="p">);</span>
+  <span class="c1">// İşlemi başlatma</span>
+  <span class="n">mainComposite</span><span class="o">.</span><span class="na">operation</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Decorator Pattern ( Dekoratör Kalıp )</em></strong></p>
+<p>Dekoratör kalıp uygulamada runtime esnasında bir sınıfın işlevlenebilirliğinin genişletilmesini veya başka bir deyişle yeniden dekore edilebilmesini mümkün kılar. Bunu yaparken dekoratör kalıpları orijinal sınıfları kapsayan yeni dekoratör sınıfları üreterek yaparlar. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Component arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Coffee</span> <span class="p">{</span>
+  <span class="kt">String</span> <span class="n">getDescription</span><span class="p">();</span>
+  <span class="kt">double</span> <span class="n">cost</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="c1">// ConcreteComponent sınıfı</span>
+<span class="kd">class</span> <span class="nc">SimpleCoffee</span> <span class="kd">implements</span> <span class="n">Coffee</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">getDescription</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"Basit kahve"</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">double</span> <span class="n">cost</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mf">5.0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Decorator sınıfı</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">CoffeeDecorator</span> <span class="kd">implements</span> <span class="n">Coffee</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">Coffee</span> <span class="n">_decoratedCoffee</span><span class="p">;</span>
+  <span class="n">CoffeeDecorator</span><span class="p">(</span><span class="n">Coffee</span> <span class="n">decoratedCoffee</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">_decoratedCoffee</span> <span class="o">=</span> <span class="n">decoratedCoffee</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">getDescription</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_decoratedCoffee</span><span class="o">.</span><span class="na">getDescription</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">double</span> <span class="n">cost</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_decoratedCoffee</span><span class="o">.</span><span class="na">cost</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// ConcreteDecorator sınıfı - Süt ekleyen dekoratör</span>
+<span class="kd">class</span> <span class="nc">MilkDecorator</span> <span class="kd">extends</span> <span class="n">CoffeeDecorator</span> <span class="p">{</span>
+  <span class="n">MilkDecorator</span><span class="p">(</span><span class="n">Coffee</span> <span class="n">decoratedCoffee</span><span class="p">)</span> <span class="o">:</span> <span class="k">super</span><span class="p">(</span><span class="n">decoratedCoffee</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">getDescription</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"</span><span class="si">${super.getDescription()}</span><span class="s">, Süt"</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">double</span> <span class="n">cost</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">super</span><span class="o">.</span><span class="na">cost</span><span class="p">()</span> <span class="o">+</span> <span class="mf">2.0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// ConcreteDecorator sınıfı - Şeker ekleyen dekoratör</span>
+<span class="kd">class</span> <span class="nc">SugarDecorator</span> <span class="kd">extends</span> <span class="n">CoffeeDecorator</span> <span class="p">{</span>
+  <span class="n">SugarDecorator</span><span class="p">(</span><span class="n">Coffee</span> <span class="n">decoratedCoffee</span><span class="p">)</span> <span class="o">:</span> <span class="k">super</span><span class="p">(</span><span class="n">decoratedCoffee</span><span class="p">);</span>
+  <span class="nd">@override</span>
+  <span class="kt">String</span> <span class="n">getDescription</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"</span><span class="si">${super.getDescription()}</span><span class="s">, Şeker"</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">double</span> <span class="n">cost</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">super</span><span class="o">.</span><span class="na">cost</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Basit kahve</span>
+  <span class="n">Coffee</span> <span class="n">coffee</span> <span class="o">=</span> <span class="n">SimpleCoffee</span><span class="p">();</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Ürün: </span><span class="si">${coffee.getDescription()}</span><span class="s">, Fiyat: </span><span class="si">${coffee.cost()}</span><span class="s"> TL"</span><span class="p">);</span>
+  <span class="c1">// Süt eklenmiş kahve</span>
+  <span class="n">Coffee</span> <span class="n">milkCoffee</span> <span class="o">=</span> <span class="n">MilkDecorator</span><span class="p">(</span><span class="n">coffee</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Ürün: </span><span class="si">${milkCoffee.getDescription()}</span><span class="s">, Fiyat: </span><span class="si">${milkCoffee.cost()}</span><span class="s"> TL"</span><span class="p">);</span>
+  <span class="c1">// Şeker ve süt eklenmiş kahve</span>
+  <span class="n">Coffee</span> <span class="n">sugarMilkCoffee</span> <span class="o">=</span> <span class="n">SugarDecorator</span><span class="p">(</span><span class="n">milkCoffee</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Ürün: </span><span class="si">${sugarMilkCoffee.getDescription()}</span><span class="s">, Fiyat: </span><span class="si">${sugarMilkCoffee.cost()}</span><span class="s"> TL"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Facade Pattern ( Vitrin Kalıp )</em></strong></p>
+<p>Vitrin kalıp çok geniş boyutlardaki kod parçalarını onlara göre çok daha sadeleştirilmiş arayüzlere indirgenilmesini sağlar. Sınıf kütüphaneleri (class library) bu tür kalıplar için verilebilecek en iyi örnekleridir. Örneğin:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Alt Sistem 1</span>
+<span class="kd">class</span> <span class="nc">Light</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">turnOn</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Işıklar açıldı"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">turnOff</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Işıklar kapatıldı"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Alt Sistem 2</span>
+<span class="kd">class</span> <span class="nc">AirConditioner</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">startCooling</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Klima soğutma moduna geçti"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">stopCooling</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Klima soğutma modundan çıktı"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Alt Sistem 3</span>
+<span class="kd">class</span> <span class="nc">TV</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">turnOn</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Televizyon açıldı"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">turnOff</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Televizyon kapatıldı"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Vitrin Sınıfı</span>
+<span class="kd">class</span> <span class="nc">HomeAutomationFacade</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">Light</span> <span class="n">_light</span><span class="p">;</span>
+  <span class="kd">late</span> <span class="n">AirConditioner</span> <span class="n">_airConditioner</span><span class="p">;</span>
+  <span class="kd">late</span> <span class="n">TV</span> <span class="n">_tv</span><span class="p">;</span>
+  <span class="n">HomeAutomationFacade</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_light</span> <span class="o">=</span> <span class="n">Light</span><span class="p">();</span>
+    <span class="n">_airConditioner</span> <span class="o">=</span> <span class="n">AirConditioner</span><span class="p">();</span>
+    <span class="n">_tv</span> <span class="o">=</span> <span class="n">TV</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="c1">// Basit bir ev otomasyonu işlemini yürüten bir metot</span>
+  <span class="kt">void</span> <span class="n">activateHome</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Ev otomasyonu başlatılıyor..."</span><span class="p">);</span>
+    <span class="n">_light</span><span class="o">.</span><span class="na">turnOn</span><span class="p">();</span>
+    <span class="n">_airConditioner</span><span class="o">.</span><span class="na">startCooling</span><span class="p">();</span>
+    <span class="n">_tv</span><span class="o">.</span><span class="na">turnOn</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="c1">// Ev otomasyonunu kapatma işlemini yürüten bir metot</span>
+  <span class="kt">void</span> <span class="n">deactivateHome</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Ev otomasyonu kapatılıyor..."</span><span class="p">);</span>
+    <span class="n">_light</span><span class="o">.</span><span class="na">turnOff</span><span class="p">();</span>
+    <span class="n">_airConditioner</span><span class="o">.</span><span class="na">stopCooling</span><span class="p">();</span>
+    <span class="n">_tv</span><span class="o">.</span><span class="na">turnOff</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Vitrin kullanımı</span>
+  <span class="n">HomeAutomationFacade</span> <span class="n">homeFacade</span> <span class="o">=</span> <span class="n">HomeAutomationFacade</span><span class="p">();</span>
+  <span class="c1">// Ev otomasyonunu başlatma</span>
+  <span class="n">homeFacade</span><span class="o">.</span><span class="na">activateHome</span><span class="p">();</span>
+  <span class="c1">// Bir süre sonra ev otomasyonunu kapatma</span>
+  <span class="c1">// Örneğin, bir kişi evden çıkıyor gibi senaryolar düşünülebilir.</span>
+  <span class="n">Future</span><span class="o">.</span><span class="na">delayed</span><span class="p">(</span><span class="kd">const</span> <span class="n">Duration</span><span class="p">(</span><span class="nl">seconds:</span> <span class="mi">5</span><span class="p">),</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="n">homeFacade</span><span class="o">.</span><span class="na">deactivateHome</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Flyweight Pattern ( Sineksıklet Kalıp )</em></strong></p>
+<p>Sineksıklet kalıp hafıza kullanımını en aza indirebilmek için verileri kendisine benzer olan nesnelerle mümkün olduğu kadar paylaşan nesnelerdir. Başka bir deyişle çok sayıda aynı türden nesneler yaratılacağına tek bir nesneden görsel nesneler yaratarak kalabalık bir nesne yapısı kurulmasına olanak sağlar.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Flyweight arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Coffee</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">serveCoffee</span><span class="p">(</span><span class="n">CoffeeOrderContext</span> <span class="n">context</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// ConcreteFlyweight sınıfı</span>
+<span class="kd">class</span> <span class="nc">CoffeeFlavor</span> <span class="kd">implements</span> <span class="n">Coffee</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="kt">String</span> <span class="n">_flavor</span><span class="p">;</span>
+  <span class="n">CoffeeFlavor</span><span class="p">(</span><span class="kt">String</span> <span class="n">flavor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">_flavor</span> <span class="o">=</span> <span class="n">flavor</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">serveCoffee</span><span class="p">(</span><span class="n">CoffeeOrderContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Kahve tadı: </span><span class="si">$_flavor</span><span class="s">, Masa: </span><span class="si">${context.tableNumber}</span><span class="s">"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Flyweight Factory</span>
+<span class="kd">class</span> <span class="nc">CoffeeFlavorFactory</span> <span class="p">{</span>
+  <span class="kt">Map</span><span class="p">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="n">CoffeeFlavor</span><span class="p">&gt;</span> <span class="n">_flavors</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="n">CoffeeFlavor</span> <span class="n">getCoffeeFlavor</span><span class="p">(</span><span class="kt">String</span> <span class="n">flavorName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_flavors</span><span class="o">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">flavorName</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">_flavors</span><span class="p">[</span><span class="n">flavorName</span><span class="p">]</span> <span class="o">=</span> <span class="n">CoffeeFlavor</span><span class="p">(</span><span class="n">flavorName</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_flavors</span><span class="p">[</span><span class="n">flavorName</span><span class="p">]</span><span class="o">!</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">int</span> <span class="n">getFlavorCount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_flavors</span><span class="o">.</span><span class="na">length</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Context sınıfı</span>
+<span class="kd">class</span> <span class="nc">CoffeeOrderContext</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">tableNumber</span><span class="p">;</span>
+  <span class="n">CoffeeOrderContext</span><span class="p">(</span><span class="k">this</span><span class="o">.</span><span class="na">tableNumber</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Flyweight Factory oluşturuluyor</span>
+  <span class="n">CoffeeFlavorFactory</span> <span class="n">flavorFactory</span> <span class="o">=</span> <span class="n">CoffeeFlavorFactory</span><span class="p">();</span>
+  <span class="c1">// Müşteri siparişleri</span>
+  <span class="n">CoffeeOrderContext</span> <span class="n">orderContext1</span> <span class="o">=</span> <span class="n">CoffeeOrderContext</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">Coffee</span> <span class="n">coffee1</span> <span class="o">=</span> <span class="n">flavorFactory</span><span class="o">.</span><span class="na">getCoffeeFlavor</span><span class="p">(</span><span class="s">"Espresso"</span><span class="p">);</span>
+  <span class="n">coffee1</span><span class="o">.</span><span class="na">serveCoffee</span><span class="p">(</span><span class="n">orderContext1</span><span class="p">);</span>
+  <span class="n">CoffeeOrderContext</span> <span class="n">orderContext2</span> <span class="o">=</span> <span class="n">CoffeeOrderContext</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">Coffee</span> <span class="n">coffee2</span> <span class="o">=</span> <span class="n">flavorFactory</span><span class="o">.</span><span class="na">getCoffeeFlavor</span><span class="p">(</span><span class="s">"Cappuccino"</span><span class="p">);</span>
+  <span class="n">coffee2</span><span class="o">.</span><span class="na">serveCoffee</span><span class="p">(</span><span class="n">orderContext2</span><span class="p">);</span>
+  <span class="n">CoffeeOrderContext</span> <span class="n">orderContext3</span> <span class="o">=</span> <span class="n">CoffeeOrderContext</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">Coffee</span> <span class="n">coffee3</span> <span class="o">=</span> <span class="n">flavorFactory</span><span class="o">.</span><span class="na">getCoffeeFlavor</span><span class="p">(</span><span class="s">"Espresso"</span><span class="p">);</span>
+  <span class="n">coffee3</span><span class="o">.</span><span class="na">serveCoffee</span><span class="p">(</span><span class="n">orderContext3</span><span class="p">);</span>
+  <span class="c1">// Fabrikadaki toplam farklı kahve sayısını kontrol etme</span>
+  <span class="n">print</span><span class="p">(</span><span class="s">"Toplam farklı kahve sayısı: </span><span class="si">${flavorFactory.getFlavorCount()}</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong><em>Proxy Pattern ( Vekil Kalıp )</em></strong></p>
+<p>Vekil kalıp internet bağlantıları, yüksek miktarda hafıza kullanımları, dosyalar veya başka türlü tüm karmaşık pahalı ve yapım aşaması zorlayıcı olan nesnelerin tek bir arayüz tarafından kullanılmalarını olası kılar.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Subject arayüzü</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">RealSubject</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="n">request</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// RealSubject sınıfı</span>
+<span class="kd">class</span> <span class="nc">RealSubjectImpl</span> <span class="kd">implements</span> <span class="n">RealSubject</span> <span class="p">{</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">request</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"RealSubject: İstek gerçekleşiyor"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Proxy sınıfı</span>
+<span class="kd">class</span> <span class="nc">Proxy</span> <span class="kd">implements</span> <span class="n">RealSubject</span> <span class="p">{</span>
+  <span class="kd">late</span> <span class="n">RealSubjectImpl</span> <span class="n">_realSubject</span><span class="p">;</span>
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">request</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// RealSubject nesnesini tembellik (lazy loading) ile yükleme</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_realSubject</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_realSubject</span> <span class="o">=</span> <span class="n">RealSubjectImpl</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="c1">// İstek RealSubject üzerinden iletiliyor</span>
+    <span class="n">_realSubject</span><span class="o">.</span><span class="na">request</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Proxy kullanımı</span>
+  <span class="n">Proxy</span> <span class="n">proxy</span> <span class="o">=</span> <span class="n">Proxy</span><span class="p">();</span>
+  <span class="c1">// İstek, Proxy üzerinden yapıldığında RealSubject'e yönlendirilecek</span>
+  <span class="n">proxy</span><span class="o">.</span><span class="na">request</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div></div>
 

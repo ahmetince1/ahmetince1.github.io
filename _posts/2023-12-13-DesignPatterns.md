@@ -7,6 +7,9 @@ thumbnail-img: /assets/img/designPatterns.png
 share-img: /assets/img/designPatternsCover.png
 author: Ahmet Zeki İnce
 ---
+<Style>
+p{text-align : justify;}
+</Style>
 
 ## Design Patterns
 
