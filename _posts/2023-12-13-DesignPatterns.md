@@ -1038,3 +1038,410 @@ void main() {
   print('Sonuç: $result'); // Sonuç: 6
 }
 ```
+
+<p></p>
+
+##### ***Structural Design Patterns***
+<p>Yapısal tasarım kalıpları, nesnelerin ve sınıfların daha büyük yapılar halinde nasıl bir araya getirileceğini ve bu yapıların esnek ve verimli tutulacağını açıklar. Yapısal kalıplar, kendi içlerinde sınıf yapı kalıpları ve nesne yapı kalıpları olmak üzere ikiye ayrılır. Bunlardan sınıf yapı kalıpları nesne tabanlı programcılığın (object oriented programming)dört temel unsurundan biri olan kalıtımı (inheritance) kullanarak sınıf arayüzlerini (interface) yada uygulamaları birleştirerek yazılım projelerindeki yapıları genişletir. Nesne yapı kalıpları ise kullanıcılara nesnelerin kendi sahip olduklarından başka işlevler kazanmaları için bu nesnelerin birleştirilip yeni nesneler oluşturulması konusunda yardımcı olur. Yapısal kalıplar ayrıca yazılım mühendislerinin uygulamalar geliştirdikleri projelerinde ihtiyaç duydukları çeşitli durumlarda kullanılmak üzere yediye ayrılır. Yapısal kalıplar yazılım projelerinin tasarım aşamalarında veya bu projelerin genişletilme aşamalarında kullanılabilirler. Temel olarak bu kalıplardan bazıları sadece projelerin başlangıç aşamalarında kullanılmak üzere özelleştirilmişseler de yapısal kalıplar grubuna ait olan tüm tasarım kalıpları kullanılacakları yer ve projelerin durumlarına göre her biri bir diğerinin alternatifi olarak iş görebilirler. Yapısal kalıplar kendi içinde yedi alt başlığa ayrılır. Bunlar:</p>
+
+***Adapter Pattern ( Adaptör Kalıp )***
+<p>Adaptör kalıp sadece bir sınıfa (class) özel olan arayüzleri diğer sınıflarla uyumlu arayüzler haline getirir. Adaptörler uyumlu olmayan arayüzler sebebiyle birbirleri ile çalışamayan sınıflara da birbirleri ile çalışma imkanı sunarlar. Örneğin:</p>
+
+```dart
+// Hedef arayüz
+abstract class Target {
+  void request();
+}
+
+// Hedef arayüzü uygulayan sınıf
+class ConcreteTarget implements Target {
+  @override
+  void request() {
+    print("ConcreteTarget: İstek gerçekleşiyor.");
+  }
+}
+
+// Var olan sınıf
+class Adaptee {
+  void specificRequest() {
+    print("Adaptee: Özel istek gerçekleşiyor.");
+  }
+}
+
+// Adapter sınıfı
+class Adapter implements Target {
+  late Adaptee _adaptee;
+  Adapter(Adaptee adaptee) {
+    this._adaptee = adaptee;
+  }
+  @override
+  void request() {
+    print("Adapter: Adaptör, isteği uygun hale getiriyor.");
+    _adaptee.specificRequest();
+  }
+}
+
+void main() {
+  // Var olan sınıfın kullanımı
+  Adaptee adaptee = Adaptee();
+  adaptee.specificRequest();
+  // Hedef arayüzü kullanan sınıf
+  Target target = ConcreteTarget();
+  target.request();
+  // Adaptörü kullanarak var olan sınıfı hedef arayüzü ile uyumlu hale getirme
+  Adapter adapter = Adapter(adaptee);
+  adapter.request();
+}
+```
+
+***Bridge Pattern ( Köprü Kalıp )***
+<p>Köprü, büyük bir sınıfı veya birbiriyle yakından ilişkili sınıflar kümesini birbirinden bağımsız olarak geliştirilebilen iki ayrı hiyerarşiye (soyutlama ve uygulama) bölmenizi sağlayan yapısal bir tasarım modelidir. Örneğin:</p>
+
+```dart
+// Uygulama arayüzü
+abstract class Platform {
+  void executeCode();
+}
+
+// Soyut implementasyon arayüzü
+abstract class Implementation {
+  void execute();
+}
+
+// İlk soyut implementasyon sınıfı
+class AndroidImplementation implements Implementation {
+  @override
+  void execute() {
+    print("Android: Kodu çalıştırıyor");
+  }
+}
+
+// İkinci soyut implementasyon sınıfı
+class IOSImplementation implements Implementation {
+  @override
+  void execute() {
+    print("iOS: Kodu çalıştırıyor");
+  }
+}
+
+// Uygulama arayüzünü uygulayan sınıf
+class MobileApp implements Platform {
+  late Implementation _implementation;
+  MobileApp(Implementation implementation) {
+    this._implementation = implementation;
+  }
+  @override
+  void executeCode() {
+    _implementation.execute();
+  }
+}
+
+void main() {
+  // Android uygulaması
+  MobileApp androidApp = MobileApp(AndroidImplementation());
+  androidApp.executeCode();
+  // iOS uygulaması
+  MobileApp iosApp = MobileApp(IOSImplementation());
+  iosApp.executeCode();
+}
+```
+
+***Composite Pattern ( Bileşik Kalıp )***
+<p>Bileşik kalıp, birbirinden farklı bir grup nesnenin sanki tek bir bütünmüş gibi davranmasını sağlar. Bileşik kalıpların görevleri nesneleri bir ağaç yapısında birleştirip uygulamanın genelindeki parça bütün ilişkisini yeniden düzenleyip şekillendirmektir. Örneğin:</p>
+
+```dart
+// Component arayüzü
+abstract class Component {
+  void operation();
+}
+// Leaf sınıfı
+class Leaf extends Component {
+  late String _name;
+  Leaf(String name) {
+    this._name = name;
+  }
+  @override
+  void operation() {
+    print("Leaf: $_name işlemi gerçekleşiyor.");
+  }
+}
+// Composite sınıfı
+class Composite extends Component {
+  List<Component> _children = [];
+  void add(Component component) {
+    _children.add(component);
+  }
+  void remove(Component component) {
+    _children.remove(component);
+  }
+  @override
+  void operation() {
+    print("Composite: İşlem başlatılıyor.");
+    for (Component component in _children) {
+      component.operation();
+    }
+    print("Composite: İşlem tamamlandı.");
+  }
+}
+
+void main() {
+  // Leaf nesneleri
+  Leaf leaf1 = Leaf("Leaf 1");
+  Leaf leaf2 = Leaf("Leaf 2");
+  Leaf leaf3 = Leaf("Leaf 3");
+  // Composite nesneleri
+  Composite composite1 = Composite();
+  Composite composite2 = Composite();
+  // Composite'a Leaf nesnelerini ekleme
+  composite1.add(leaf1);
+  composite1.add(leaf2);
+  composite2.add(leaf3);
+  // Ana Composite'a diğer Composite nesnelerini ekleme
+  Composite mainComposite = Composite();
+  mainComposite.add(composite1);
+  mainComposite.add(composite2);
+  // İşlemi başlatma
+  mainComposite.operation();
+}
+```
+
+***Decorator Pattern ( Dekoratör Kalıp )***
+<p>Dekoratör kalıp uygulamada runtime esnasında bir sınıfın işlevlenebilirliğinin genişletilmesini veya başka bir deyişle yeniden dekore edilebilmesini mümkün kılar. Bunu yaparken dekoratör kalıpları orijinal sınıfları kapsayan yeni dekoratör sınıfları üreterek yaparlar. Örneğin:</p>
+
+```dart
+// Component arayüzü
+abstract class Coffee {
+  String getDescription();
+  double cost();
+}
+// ConcreteComponent sınıfı
+class SimpleCoffee implements Coffee {
+  @override
+  String getDescription() {
+    return "Basit kahve";
+  }
+  @override
+  double cost() {
+    return 5.0;
+  }
+}
+// Decorator sınıfı
+abstract class CoffeeDecorator implements Coffee {
+  late Coffee _decoratedCoffee;
+  CoffeeDecorator(Coffee decoratedCoffee) {
+    this._decoratedCoffee = decoratedCoffee;
+  }
+  @override
+  String getDescription() {
+    return _decoratedCoffee.getDescription();
+  }
+  @override
+  double cost() {
+    return _decoratedCoffee.cost();
+  }
+}
+// ConcreteDecorator sınıfı - Süt ekleyen dekoratör
+class MilkDecorator extends CoffeeDecorator {
+  MilkDecorator(Coffee decoratedCoffee) : super(decoratedCoffee);
+  @override
+  String getDescription() {
+    return "${super.getDescription()}, Süt";
+  }
+  @override
+  double cost() {
+    return super.cost() + 2.0;
+  }
+}
+// ConcreteDecorator sınıfı - Şeker ekleyen dekoratör
+class SugarDecorator extends CoffeeDecorator {
+  SugarDecorator(Coffee decoratedCoffee) : super(decoratedCoffee);
+  @override
+  String getDescription() {
+    return "${super.getDescription()}, Şeker";
+  }
+  @override
+  double cost() {
+    return super.cost() + 1.0;
+  }
+}
+
+void main() {
+  // Basit kahve
+  Coffee coffee = SimpleCoffee();
+  print("Ürün: ${coffee.getDescription()}, Fiyat: ${coffee.cost()} TL");
+  // Süt eklenmiş kahve
+  Coffee milkCoffee = MilkDecorator(coffee);
+  print("Ürün: ${milkCoffee.getDescription()}, Fiyat: ${milkCoffee.cost()} TL");
+  // Şeker ve süt eklenmiş kahve
+  Coffee sugarMilkCoffee = SugarDecorator(milkCoffee);
+  print("Ürün: ${sugarMilkCoffee.getDescription()}, Fiyat: ${sugarMilkCoffee.cost()} TL");
+}
+```
+
+***Facade Pattern ( Vitrin Kalıp )***
+<p>Vitrin kalıp çok geniş boyutlardaki kod parçalarını onlara göre çok daha sadeleştirilmiş arayüzlere indirgenilmesini sağlar. Sınıf kütüphaneleri (class library) bu tür kalıplar için verilebilecek en iyi örnekleridir. Örneğin:</p>
+
+```dart
+// Alt Sistem 1
+class Light {
+  void turnOn() {
+    print("Işıklar açıldı");
+  }
+  void turnOff() {
+    print("Işıklar kapatıldı");
+  }
+}
+
+// Alt Sistem 2
+class AirConditioner {
+  void startCooling() {
+    print("Klima soğutma moduna geçti");
+  }
+  void stopCooling() {
+    print("Klima soğutma modundan çıktı");
+  }
+}
+
+// Alt Sistem 3
+class TV {
+  void turnOn() {
+    print("Televizyon açıldı");
+  }
+  void turnOff() {
+    print("Televizyon kapatıldı");
+  }
+}
+
+// Vitrin Sınıfı
+class HomeAutomationFacade {
+  late Light _light;
+  late AirConditioner _airConditioner;
+  late TV _tv;
+  HomeAutomationFacade() {
+    _light = Light();
+    _airConditioner = AirConditioner();
+    _tv = TV();
+  }
+  // Basit bir ev otomasyonu işlemini yürüten bir metot
+  void activateHome() {
+    print("Ev otomasyonu başlatılıyor...");
+    _light.turnOn();
+    _airConditioner.startCooling();
+    _tv.turnOn();
+  }
+  // Ev otomasyonunu kapatma işlemini yürüten bir metot
+  void deactivateHome() {
+    print("Ev otomasyonu kapatılıyor...");
+    _light.turnOff();
+    _airConditioner.stopCooling();
+    _tv.turnOff();
+  }
+}
+
+void main() {
+  // Vitrin kullanımı
+  HomeAutomationFacade homeFacade = HomeAutomationFacade();
+  // Ev otomasyonunu başlatma
+  homeFacade.activateHome();
+  // Bir süre sonra ev otomasyonunu kapatma
+  // Örneğin, bir kişi evden çıkıyor gibi senaryolar düşünülebilir.
+  Future.delayed(const Duration(seconds: 5), () {
+    homeFacade.deactivateHome();
+  });
+}
+```
+
+***Flyweight Pattern ( Sineksıklet Kalıp )***
+<p>Sineksıklet kalıp hafıza kullanımını en aza indirebilmek için verileri kendisine benzer olan nesnelerle mümkün olduğu kadar paylaşan nesnelerdir. Başka bir deyişle çok sayıda aynı türden nesneler yaratılacağına tek bir nesneden görsel nesneler yaratarak kalabalık bir nesne yapısı kurulmasına olanak sağlar.</p>
+
+```dart
+// Flyweight arayüzü
+abstract class Coffee {
+  void serveCoffee(CoffeeOrderContext context);
+}
+// ConcreteFlyweight sınıfı
+class CoffeeFlavor implements Coffee {
+  late String _flavor;
+  CoffeeFlavor(String flavor) {
+    this._flavor = flavor;
+  }
+  @override
+  void serveCoffee(CoffeeOrderContext context) {
+    print("Kahve tadı: $_flavor, Masa: ${context.tableNumber}");
+  }
+}
+// Flyweight Factory
+class CoffeeFlavorFactory {
+  Map<String, CoffeeFlavor> _flavors = {};
+  CoffeeFlavor getCoffeeFlavor(String flavorName) {
+    if (!_flavors.containsKey(flavorName)) {
+      _flavors[flavorName] = CoffeeFlavor(flavorName);
+    }
+    return _flavors[flavorName]!;
+  }
+  int getFlavorCount() {
+    return _flavors.length;
+  }
+}
+// Context sınıfı
+class CoffeeOrderContext {
+  int tableNumber;
+  CoffeeOrderContext(this.tableNumber);
+}
+
+void main() {
+  // Flyweight Factory oluşturuluyor
+  CoffeeFlavorFactory flavorFactory = CoffeeFlavorFactory();
+  // Müşteri siparişleri
+  CoffeeOrderContext orderContext1 = CoffeeOrderContext(1);
+  Coffee coffee1 = flavorFactory.getCoffeeFlavor("Espresso");
+  coffee1.serveCoffee(orderContext1);
+  CoffeeOrderContext orderContext2 = CoffeeOrderContext(2);
+  Coffee coffee2 = flavorFactory.getCoffeeFlavor("Cappuccino");
+  coffee2.serveCoffee(orderContext2);
+  CoffeeOrderContext orderContext3 = CoffeeOrderContext(1);
+  Coffee coffee3 = flavorFactory.getCoffeeFlavor("Espresso");
+  coffee3.serveCoffee(orderContext3);
+  // Fabrikadaki toplam farklı kahve sayısını kontrol etme
+  print("Toplam farklı kahve sayısı: ${flavorFactory.getFlavorCount()}");
+}
+```
+
+***Proxy Pattern ( Vekil Kalıp )***
+<p>Vekil kalıp internet bağlantıları, yüksek miktarda hafıza kullanımları, dosyalar veya başka türlü tüm karmaşık pahalı ve yapım aşaması zorlayıcı olan nesnelerin tek bir arayüz tarafından kullanılmalarını olası kılar.</p>
+
+```dart
+// Subject arayüzü
+abstract class RealSubject {
+  void request();
+}
+
+// RealSubject sınıfı
+class RealSubjectImpl implements RealSubject {
+  @override
+  void request() {
+    print("RealSubject: İstek gerçekleşiyor");
+  }
+}
+
+// Proxy sınıfı
+class Proxy implements RealSubject {
+  late RealSubjectImpl _realSubject;
+  @override
+  void request() {
+    // RealSubject nesnesini tembellik (lazy loading) ile yükleme
+    if (_realSubject == null) {
+      _realSubject = RealSubjectImpl();
+    }
+    // İstek RealSubject üzerinden iletiliyor
+    _realSubject.request();
+  }
+}
+
+void main() {
+  // Proxy kullanımı
+  Proxy proxy = Proxy();
+  // İstek, Proxy üzerinden yapıldığında RealSubject'e yönlendirilecek
+  proxy.request();
+}
+```
