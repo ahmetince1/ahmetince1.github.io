@@ -26,7 +26,7 @@ Bu kalıplar 3 ana başlık altında toplanmıştır. Bunlar:
 
 ##### ***Creational Design Patterns***
 
-<p>Yaratımsal tasarım kalıpları, yazılım nesnelerini esnek bir yapı kullanarak genel öneriler sunar ve önceden belirlenmiş durumlara bağlı olarak gerekli nesneleri yaratır. Bu tasarım kalıpları, sistem içinde hangi nesnenin çağrılması gerektiğini izlemeden, sistemin uygun nesneyi çağırmasını sağlar. Nesnelerin yaratılmasıyla ilgili esnek bir yaklaşım sunarak, uygulamaya belirli bir durumda nasıl davranılacağı konusunda farkedilebilir bir esneklik kazandırır. Temel amaç, yazılımın içindeki nesnelerin nasıl yaratıldığından bağımsız olarak iyi bir tasarım sağlamaktır.</p>
+<p>Yaratımsal tasarım kalıpları, yazılım nesnelerini yaratırken esnek bir yapı kullanarak genel öneriler sunar ve önceden belirlenmiş durumlara bağlı olarak gerekli nesneleri yaratır. Bu tasarım kalıpları, sistem içinde hangi nesnenin çağrılması gerektiğini izlemeden, sistemin uygun nesneyi çağırmasını sağlar. Nesnelerin yaratılmasıyla ilgili esnek bir yaklaşım sunarak, uygulamaya belirli bir durumda nasıl davranılacağı konusunda farkedilebilir bir esneklik kazandırır. Temel amaç, yazılımın içindeki nesnelerin nasıl yaratıldığından bağımsız olarak iyi bir tasarım sağlamaktır.</p>
 Yaratımsal tasarım kalıpları şunlardır:
 
 ***Singleton ( Yegane )***
