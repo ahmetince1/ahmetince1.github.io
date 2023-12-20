@@ -281,6 +281,19 @@ class PizzaBuilder{
     return Pizza(this);
   }
 }
+
+void main() {
+  final builder1 = PizzaBuilder(12, 'Pizza A');
+  final p1 = builder1.build();
+  print(p1);
+
+  final builder2 = PizzaBuilder(12, 'Pizza A');
+  builder2.cheese = 'Extra Cheese';
+  builder2.crust = 'THIN';
+  builder2.topping = Set.from(['Chillie']);
+  final p2 = builder2.build();
+  print(p2);
+}
 ```
 
 ***Prototype ( Örnek )***
