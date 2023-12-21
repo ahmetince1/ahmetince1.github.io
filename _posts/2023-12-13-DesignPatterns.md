@@ -518,7 +518,7 @@ void main() {
 ```
 
 ***Iterator Pattern ( Tekrarlayıcı Kalıbı )***
-<p>Tekrarlayıcı tasarım kalıbı ile bir listede yer almakta olan nesnelerin sırasıyla, listenin yapısını ve çalışma tarzının uygulamanın diğer kısımları ile olan bağlantılarını en aza indirmek için uygulamadan soyutlama amaçlı kullanılabilmektedir. Örneğin:</p>
+<p>Iterator, bir koleksiyonun temel temsilini (liste, yığın, ağaç, vb.) açığa çıkarmadan koleksiyonun öğeleri arasında geçiş yapmanızı sağlayan davranışsal bir tasarım modelidir. Örneğin:</p>
 
 ```dart
 // Iterable sınıfını uygulayan bir sınıf
