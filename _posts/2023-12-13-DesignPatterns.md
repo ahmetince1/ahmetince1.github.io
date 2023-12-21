@@ -1443,12 +1443,13 @@ class RealSubjectImpl implements RealSubject {
 // Proxy sınıfı
 class Proxy implements RealSubject {
   late RealSubjectImpl _realSubject;
+
+  Proxy() {
+    _realSubject = RealSubjectImpl();
+  }
+
   @override
   void request() {
-    // RealSubject nesnesini tembellik (lazy loading) ile yükleme
-    if (_realSubject == null) {
-      _realSubject = RealSubjectImpl();
-    }
     // İstek RealSubject üzerinden iletiliyor
     _realSubject.request();
   }
